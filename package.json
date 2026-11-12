@@ -1,0 +1,27 @@
+{
+  "name": "icon-type-pairing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Icon + Type: spin to pair an icon set from Iconify with a free font. Svelte and Web Awesome. A crwdsrc.dev experiment.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "data": "node scripts/build-data.cjs",
+    "dev": "npm run data && vite",
+    "build": "npm run data && vite build && node scripts/compress.cjs",
+    "preview": "node scripts/preview.cjs",
+    "start": "npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "google-font-metadata": "6.0.8",
+    "svelte": "^5.57.3",
+    "vite": "^8.3.8"
+  },
+  "dependencies": {
+    "@awesome.me/webawesome": "^3.14.0"
+  },
+  "type": "module"
+}

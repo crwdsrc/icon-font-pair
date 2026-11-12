@@ -1,0 +1,3514 @@
+[
+ {
+  "id": "42dot-sans",
+  "family": "42dot Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "korean",
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "adwaita-mono",
+  "family": "Adwaita Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The GNOME Project (based on Iosevka by Belleve Invis)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "adwaita-sans",
+  "family": "Adwaita Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The GNOME Project (based on Inter by Rasmus Andersson)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "aileron",
+  "family": "Aileron",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   300,
+   400,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "CC0-1.0",
+  "attribution": "Sora Sagano",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "akt",
+  "family": "Akt",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "greek-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2024 The Akt Project Authors (https://github.com/dimgrenev/akt)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "alien-block",
+  "family": "Alien Block",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Alien Block Project Authors (https://github.com/koci-design/AlienBlock)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "allkin",
+  "family": "Allkin",
+  "category": "display",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Allkin Project Authors (https://github.com/googlefonts/allkin), with Reserved Font Name \"Allkin\".",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "alyamama",
+  "family": "Alyamama",
+  "category": "serif",
+  "subsets": [
+   "arabic",
+   "greek",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Alyamama Project Authors (https://github.com/Mestaratype/AlYamama)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "apfel-grotezk",
+  "family": "Apfel Grotezk",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Luigi Gorlero",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "argentum-sans",
+  "family": "Argentum Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Argentum Sans Project Authors (cssobral2013@gmail.com - https://github.com/cssobral2013/Argentum-Sans)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "arima-madurai",
+  "family": "Arima Madurai",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "tamil",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2015 The Arima Project Authors (info@ndiscovered.com)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "asap-sharp",
+  "family": "Asap Sharp",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Asap Sharp Project Authors (https://github.com/Omnibus-Type/Asap_Sharp) AsapSharp-Italic[wdth,wght].ttf: Copyright 2026 The Asap Sharp Project Authors (https://github.com/Omnibus-Type/Asap_Sharp)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "bagnard",
+  "family": "Bagnard",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Sebastien Sanfilippo (www.love-letters.be)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "bagnard-sans",
+  "family": "Bagnard Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Sebastien Sanfilippo (www.love-letters.be)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "bbh-sans-bartle",
+  "family": "BBH Sans Bartle",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The BBHSans Project Authors (https://github.com/Studio-DRAMA/BBHSans)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "bbh-sans-bogle",
+  "family": "BBH Sans Bogle",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The BBHSans Project Authors (https://github.com/Studio-DRAMA/BBHSans)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "bbh-sans-hegarty",
+  "family": "BBH Sans Hegarty",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The BBHSans Project Authors (https://github.com/Studio-DRAMA/BBHSans)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "betania-patmos",
+  "family": "Betania Patmos",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2024 The Betania Patmos Project Authors (https://github.com/huertatipografica/betania-patmos)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "betania-patmos-gdl",
+  "family": "Betania Patmos GDL",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "betania-patmos-in",
+  "family": "Betania Patmos In",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2024 The Betania Patmos Project Authors (https://github.com/huertatipografica/betania-patmos)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "betania-patmos-in-gdl",
+  "family": "Betania Patmos In GDL",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-display",
+  "family": "Big Shoulders Display",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-inline-display",
+  "family": "Big Shoulders Inline Display",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-inline-text",
+  "family": "Big Shoulders Inline Text",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-stencil-display",
+  "family": "Big Shoulders Stencil Display",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-stencil-text",
+  "family": "Big Shoulders Stencil Text",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "big-shoulders-text",
+  "family": "Big Shoulders Text",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "bjcree",
+  "family": "BJCree",
+  "category": "serif",
+  "subsets": [
+   "canadian-aboriginal",
+   "latin"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright (c) 2000-2026 SIL Global (https://www.sil.org). Latin glyphs originally copyright (c) 2014-2015 (URW)++ Design and Development, with modifications copyright (c) 2024-2026 SIL Global. BJCree-Medium.ttf: Copyright (c) 2000-2026 SIL Global (https://www.sil.org). Latin glyphs originally copyright (c) 2014-2015 (URW)++ Design and Development, with modifications copyright (c) 2024-2026 SIL Global. BJCree-SemiBold.ttf: Copyright (c) 2000-2026 SIL Global (https://www.sil.org). Latin glyphs originally copyright (c) 2014-2015 (URW)++ Design and Development, with modifications copyright (c) 2024-2026 SIL Global. BJCree-Bold.ttf: Copyright (c) 2000-2026 SIL Global (https://www.sil.org). Latin glyphs originally copyright (c) 2014-2015 (URW)++ Design and Development, with modifications copyright (c) 2024-2026 SIL Global.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "blackout-midnight",
+  "family": "Blackout Midnight",
+  "category": "display",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Tyler Finck <hello@sursly.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "blackout-sunrise",
+  "family": "Blackout Sunrise",
+  "category": "display",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Tyler Finck <hello@sursly.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "blackout-two-am",
+  "family": "Blackout Two AM",
+  "category": "display",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Tyler Finck <hello@sursly.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "bluu-next",
+  "family": "Bluu Next",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jean-Baptiste Morizot, (http://cargocollective.com/jbmrz)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "bpmf-huninn",
+  "family": "Bpmf Huninn",
+  "category": "sans-serif",
+  "subsets": [
+   "chinese-traditional",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Bpmf Project Authors (https://github.com/ButTaiwan/bpmfvs)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "bpmf-iansui",
+  "family": "Bpmf Iansui",
+  "category": "handwriting",
+  "subsets": [
+   "chinese-traditional",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Bpmf Project Authors (https://github.com/ButTaiwan/bpmfvs)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "bpmf-zihi-kai-std",
+  "family": "Bpmf Zihi Kai Std",
+  "category": "sans-serif",
+  "subsets": [
+   "chinese-traditional",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Bpmf Project Authors (https://github.com/ButTaiwan/bpmfvs)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "briem-hand",
+  "family": "Briem Hand",
+  "category": "handwriting",
+  "subsets": [
+   "cyrillic-ext",
+   "greek-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2019 The Briem Hand Project Authors (https://github.com/SorkinType/Briem-Hand)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "caacupe-one",
+  "family": "Caacupe One",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "chunk-five",
+  "family": "Chunk Five",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Meredith Mandel <meredith@meredithmandel.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "clarity-city",
+  "family": "Clarity City",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2019 The Clarity City Project Authors (https://github.com/googlefonts/clarity-city) ClarityCity-Italic[wght].ttf: Copyright 2019 The Clarity City Project Authors (https://github.com/googlefonts/clarity-city)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "clear-sans",
+  "family": "Clear Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   300,
+   400,
+   500,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "Apache-2.0",
+  "attribution": "Intel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "coda-caption",
+  "family": "Coda Caption",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "comic-mono",
+  "family": "Comic Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "mit",
+  "attribution": "Shannon Miwa, dtinth",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "commit-mono",
+  "family": "Commit Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Eigil Nikolajsen",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "cooper-hewitt",
+  "family": "Cooper Hewitt",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Cooper Hewitt Smithsonian Design Museum (cooperhewitt.org)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "datatype",
+  "family": "Datatype",
+  "category": "monospace",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Datatype Project Authors (https://github.com/franktisellano/datatype)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "dejavu-mono",
+  "family": "DejaVu Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Bitstream, Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dejavu-sans",
+  "family": "DejaVu Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Bitstream, Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dejavu-serif",
+  "family": "DejaVu Serif",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Bitstream, Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg14-classic",
+  "family": "DSEG14 Classic",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg14-classic-mini",
+  "family": "DSEG14 Classic Mini",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg14-modern",
+  "family": "DSEG14 Modern",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg14-modern-mini",
+  "family": "DSEG14 Modern Mini",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-classic",
+  "family": "DSEG7 Classic",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-classic-mini",
+  "family": "DSEG7 Classic Mini",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-modern",
+  "family": "DSEG7 Modern",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-modern-mini",
+  "family": "DSEG7 Modern Mini",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-segg-chan",
+  "family": "DSEG7 SEGG CHAN",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "dseg7-segg-chan-mini",
+  "family": "DSEG7 SEGG CHAN Mini",
+  "category": "other",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "keshikan (https://www.keshikan.net)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "estedad",
+  "family": "Estedad",
+  "category": "sans-serif",
+  "subsets": [
+   "arabic",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Estedad Project Authors (https://github.com/aminabedi68/Estedad)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "finlandica-headline",
+  "family": "Finlandica Headline",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2015 The Finlandica Project Authors (https://github.com/HelsinkiTypeStudio/Finlandica) FinlandicaHeadline-Italic[wght].ttf: Copyright 2015 The Finlandica Project Authors (https://github.com/HelsinkiTypeStudio/Finlandica)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "finlandica-text",
+  "family": "Finlandica Text",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2015 The Finlandica Project Authors (https://github.com/HelsinkiTypeStudio/Finlandica) FinlandicaText-Italic[wght].ttf: Copyright 2015 The Finlandica Project Authors (https://github.com/HelsinkiTypeStudio/Finlandica)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "firago",
+  "family": "FiraGO",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Carrois Corporate GbR and HERE Europe B.V.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "fredoka-one",
+  "family": "Fredoka One",
+  "category": "display",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright (c) 2011 Milena B Brandao (milenabbrandao@gmail.com), with Reserved Font Name \"Fredoka\"",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "fusion-kai-g",
+  "family": "Fusion Kai G",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "lxgw",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "fusion-kai-j",
+  "family": "Fusion Kai J",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "lxgw",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "fusion-kai-t",
+  "family": "Fusion Kai T",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "lxgw",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "fusion-pixel-12px-monospaced-sc",
+  "family": "Fusion Pixel 12px Monospaced SC",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "TakWolf (https://takwolf.com)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "fusion-pixel-12px-proportional-sc",
+  "family": "Fusion Pixel 12px Proportional SC",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "TakWolf (https://takwolf.com)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "geist-pixel",
+  "family": "Geist Pixel",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Geist Project Authors (https://github.com/vercel/geist-font)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "geist-sans",
+  "family": "Geist Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Vercel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "genjyuu-gothic",
+  "family": "Genjyuu Gothic",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   700,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "自家製フォント工房",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "gentium-book-basic",
+  "family": "Gentium Book Basic",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright (c) SIL International, 2003-2013.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "geomini",
+  "family": "Geomini",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Geomini Project Authors (https://github.com/fontbob/geomini)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "gveret-levin",
+  "family": "Gveret Levin",
+  "category": "handwriting",
+  "subsets": [
+   "hebrew",
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2024 The Gveret Levin Project Authors (https://github.com/AlefAlefAlef/gveret-levin)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "hauora-sans",
+  "family": "Hauora Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "WCYS & Co. (https://wcys.co)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "hibur-mono",
+  "family": "Hibur Mono",
+  "category": "monospace",
+  "subsets": [
+   "ethiopic",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025-2026 The Hibur Mono Font Project Authors (https://github.com/typehabesha/HiburMono).",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "ia-writer-duo",
+  "family": "iA Writer Duo",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Information Architects Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "ia-writer-mono",
+  "family": "iA Writer Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Information Architects Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "ia-writer-quattro",
+  "family": "iA Writer Quattro",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Information Architects Inc.",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "idiqlat",
+  "family": "Idiqlat",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "syriac"
+  ],
+  "weights": [
+   200,
+   300,
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright (c) 2025-2026, SIL Global (https://www.sil.org/), with Reserved Font Names \"Idiqlat\" and \"SIL\". Original fonts copyright (c) 1997-2025, Sparksoft Systems, with Reserved Font Names \"Marcus\" and \"Nohadra\". Latin glyphs copyright (c) 2018 The Crimson Pro Project Authors (https://github.com/Fonthausen/CrimsonPro). Idiqlat-Light.ttf: Copyright (c) 2025-2026, SIL Global (https://www.sil.org/), with Reserved Font Names \"Idiqlat\" and \"SIL\". Original fonts copyright (c) 1997-2025, Sparksoft Systems, with Reserved Font Names \"Marcus\" and \"Nohadra\". Latin glyphs copyright (c) 2018 The Crimson Pro Project Authors (https://github.com/Fonthausen/CrimsonPro). Idiqlat-Regular.ttf: Copyright (c) 2025-2026, SIL Global (https://www.sil.org/), with Reserved Font Names \"Idiqlat\" and \"SIL\". Original fonts copyright (c) 1997-2025, Sparksoft Systems, with Reserved Font Names \"Marcus\" and \"Nohadra\". Latin glyphs copyright (c) 2018 The Crimson Pro Project Authors (https://github.com/Fonthausen/CrimsonPro).",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "iosevka",
+  "family": "Iosevka",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Belleve Invis",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "iosevka-aile",
+  "family": "Iosevka Aile",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Belleve Invis",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "iosevka-charon",
+  "family": "Iosevka Charon",
+  "category": "monospace",
+  "subsets": [
+   "armenian",
+   "braille",
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "greek-ext",
+   "latin",
+   "latin-ext",
+   "math",
+   "symbols",
+   "symbols2",
+   "vietnamese"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   700
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-LightItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-Regular.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-Italic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-Medium.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-MediumItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-Bold.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharon-BoldItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "iosevka-charon-mono",
+  "family": "Iosevka Charon Mono",
+  "category": "monospace",
+  "subsets": [
+   "armenian",
+   "braille",
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "greek-ext",
+   "latin",
+   "latin-ext",
+   "math",
+   "symbols",
+   "symbols2",
+   "vietnamese"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   700
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-LightItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-Regular.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-Italic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-Medium.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-MediumItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-Bold.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka) IosevkaCharonMono-BoldItalic.ttf: Copyright 2015-2025 The Iosevka Project Authors (https://github.com/be5invis/Iosevka)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "iosevka-curly",
+  "family": "Iosevka Curly",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Belleve Invis",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "iosevka-curly-slab",
+  "family": "Iosevka Curly Slab",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Belleve Invis",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "iosevka-etoile",
+  "family": "Iosevka Etoile",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Belleve Invis",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "isometra",
+  "family": "Isometra",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Isometra Project Authors (https://github.com/field2/isometra)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "junction",
+  "family": "Junction",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Caroline Hadilaksono <caroline@hadilaksono.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "karmilla",
+  "family": "Karmilla",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Karmilla Project Authors (https://github.com/ms-studio/karmilla)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "kripa",
+  "family": "Kripa",
+  "category": "sans-serif",
+  "subsets": [
+   "devanagari",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Kripa Type Project Authors (https://github.com/kedar9/kripa)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "league-mono",
+  "family": "League Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Tyler Finck <hi@tylerfinck.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "lextrall",
+  "family": "Lextrall",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2023 Amuzil (https://github.com/amuzil/lextrall) & Copyright 2019 The Lexend Project Authors (https://github.com/googlefonts/lexend)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "libre-caslon-condensed",
+  "family": "Libre Caslon Condensed",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2020 The Libre Caslon Condensed Project Authors (https://github.com/ertekinno/libre-caslon-condensed) LibreCaslonCondensed-Italic[wght].ttf: Copyright 2020 The Libre Caslon Condensed Project Authors (https://github.com/ertekinno/libre-caslon-condensed)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "line-seed-jp",
+  "family": "LINE Seed JP",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "greek-ext",
+   "japanese",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   100,
+   400,
+   700,
+   800
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.2",
+  "type": "google"
+ },
+ {
+  "id": "lxgw-wenkai",
+  "family": "LXGW WenKai",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   500,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "lxgw",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "m-plus-u",
+  "family": "M PLUS U",
+  "category": "sans-serif",
+  "subsets": [
+   "japanese",
+   "latin",
+   "latin-ext",
+   "symbols2",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The M+ FONTS Project Authors (https://github.com/coz-m/MPLUS_FONTS)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "maple-mono",
+  "family": "Maple Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Subframe7536",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "merienda-one",
+  "family": "Merienda One",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright (c) 2011, Eduardo Tunni (http://www.tipo.net.ar), with Reserved Font Name \"Merienda\"",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "metropolis",
+  "family": "Metropolis",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "Unlicense",
+  "attribution": "Chris Simpson",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "miranda-sans",
+  "family": "Miranda Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Miranda Sans Project Authors (https://github.com/maxthunberg/miranda-sans/) MirandaSans-Italic[wght].ttf: Copyright 2025 The Miranda Sans Project Authors (https://github.com/maxthunberg/miranda-sans/)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "monaspace-argon",
+  "family": "Monaspace Argon",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "githubnext",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "monaspace-krypton",
+  "family": "Monaspace Krypton",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "githubnext",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "monaspace-neon",
+  "family": "Monaspace Neon",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "githubnext",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "monaspace-radon",
+  "family": "Monaspace Radon",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "githubnext",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "monaspace-xenon",
+  "family": "Monaspace Xenon",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "githubnext",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "mononoki",
+  "family": "Mononoki",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Matthias Tellen matthias.tellen@googlemail.com",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "montenegrin-gothic-one",
+  "family": "Montenegrin Gothic One",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2014 The Montenegrin Gothic One Project Authors (https://github.com/MagicformDesign/montenegrin-gothic-one)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "montserrat-subrayada",
+  "family": "Montserrat Subrayada",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "nebula-sans",
+  "family": "Nebula Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Nebula Entertainment & Broadcasting LLC",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "norwester",
+  "family": "Norwester",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jamie Wilson (jamiewilson.io)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "noto-mono",
+  "family": "Noto Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Noto Project Authors (github.com/googlei18n/noto-fonts)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "open-runde",
+  "family": "Open Runde",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Laurids Kern",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "open-sauce-one",
+  "family": "Open Sauce One",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Open Sauce One Authors (https://github.com/marcologous/Open-Sauce-Fonts)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "open-sauce-sans",
+  "family": "Open Sauce Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Open Sauce Sans Authors (https://github.com/marcologous/Open-Sauce-Fonts)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "open-sauce-two",
+  "family": "Open Sauce Two",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "The Open Sauce Two Authors (https://github.com/marcologous/Open-Sauce-Fonts)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "opendyslexic",
+  "family": "OpenDyslexic",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Abbie Gonzalez (https://abbiecod.es|support@abbiecod.es)\\",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "ostrich-sans",
+  "family": "Ostrich Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   700,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Tyler Finck <hi@tylerfinck.com>",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "peace-sans",
+  "family": "Peace Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Sergey Ryadovoy",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "pitagon-sans",
+  "family": "Pitagon Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Travis Tran & Pitagon",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "pitagon-sans-mono",
+  "family": "Pitagon Sans Mono",
+  "category": "monospace",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Travis Tran & Pitagon",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "pitagon-sans-text",
+  "family": "Pitagon Sans Text",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Travis Tran & Pitagon",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "pitagon-serif",
+  "family": "Pitagon Serif",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Travis Tran & Pitagon",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "playwrite-nz-basic",
+  "family": "Playwrite NZ Basic",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "playwrite-nz-basic-guides",
+  "family": "Playwrite NZ Basic Guides",
+  "category": "handwriting",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "pliant",
+  "family": "Pliant",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "greek-ext",
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2025 The Pliant Project Authors (https://github.com/TheJonassss/Pliant) Pliant-Italic[wdth,wght].ttf: Copyright 2025 The Pliant Project Authors (https://github.com/TheJonassss/Pliant)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "pretendard",
+  "family": "Pretendard",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "orioncactus",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "pushster",
+  "family": "Pushster",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2010 xyz The Lobster Project Authors (https://github.com/impallari/The-Lobster-Font), with Reserved Font Name \"Lobster\".4",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "ramsina",
+  "family": "Ramsina",
+  "category": "serif",
+  "subsets": [
+   "latin",
+   "syriac"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Original fonts copyright (c) 1997-2025, Sparksoft Systems, with Reserved Font Names \"Marcus\" and \"Nohadra\". Latin glyphs copyright (c) 2018 The Crimson Pro Project Authors (https://github.com/Fonthausen/CrimsonPro). Copyright (c) 2025-2026, SIL Global (https://www.sil.org/), with Reserved Font Names \"Ramsina\" and \"SIL\".",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "redaction",
+  "family": "Redaction",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-10",
+  "family": "Redaction 10",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-100",
+  "family": "Redaction 100",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-20",
+  "family": "Redaction 20",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-35",
+  "family": "Redaction 35",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-50",
+  "family": "Redaction 50",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "redaction-70",
+  "family": "Redaction 70",
+  "category": "serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Jeremy Mickel",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "rubik-one",
+  "family": "Rubik One",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Hubert and Fischer, Philipp Hubert (philipp@hubertfischer.com), Sebastian Fischer (sebastian@hubertfischer.com)",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "saira-stencil",
+  "family": "Saira Stencil",
+  "category": "display",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2020 The Saira Project Authors (https://github.com/Omnibus-Type/Saira) SairaStencil-Italic[wdth,wght].ttf: Copyright 2020 The Saira Project Authors (https://github.com/Omnibus-Type/Saira)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "scoutie-sans",
+  "family": "Scoutie Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Scoutie Sans Project Authors (https://github.com/sursly/scoutie) ScoutieSans-Italic[wght].ttf: Copyright 2026 The Scoutie Sans Project Authors (https://github.com/sursly/scoutie)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "sn-pro",
+  "family": "SN Pro",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2024 The SN Pro Project Authors (https://github.com/supernotes/sn-pro) SNPro-Italic[wght].ttf: Copyright 2024 The SN Pro Project Authors (https://github.com/supernotes/sn-pro)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "source-sans-pro",
+  "family": "Source Sans Pro",
+  "category": "sans-serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "greek-ext",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   600,
+   700,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "source-serif-pro",
+  "family": "Source Serif Pro",
+  "category": "serif",
+  "subsets": [
+   "cyrillic",
+   "cyrillic-ext",
+   "greek",
+   "latin",
+   "latin-ext",
+   "vietnamese"
+  ],
+  "weights": [
+   200,
+   300,
+   400,
+   600,
+   700,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Google Inc.",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "strichpunkt-sans",
+  "family": "Strichpunkt Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Strichpunkt Sans Project Authors (https://github.com/strichpunkt-design/Strichpunkt_Sans)",
+  "version": "5.3.0",
+  "type": "google"
+ },
+ {
+  "id": "uncut-sans",
+  "family": "Uncut Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "styles": [
+   "normal",
+   "italic"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Kasper Nordkvist",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "valley-sans",
+  "family": "Valley Sans",
+  "category": "sans-serif",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "styles": [
+   "italic",
+   "normal"
+  ],
+  "variable": true,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Valley Sans Project Authors (https://github.com/HelsinkiTypeStudio/valley-sans) ValleySans-Italic[wght].ttf: Copyright 2026 The Valley Sans Project Authors (https://github.com/HelsinkiTypeStudio/valley-sans)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "win95fa",
+  "family": "WIN95FA",
+  "category": "sans-serif",
+  "subsets": [
+   "latin"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Alina Sava",
+  "version": "5.3.0",
+  "type": "other"
+ },
+ {
+  "id": "yuyu",
+  "family": "Yuyu",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Yuyu Font Project Authors (https://github.com/JuliaGarciaLopez/Yuyu-Font)",
+  "version": "5.3.1",
+  "type": "google"
+ },
+ {
+  "id": "yuyu-short",
+  "family": "Yuyu Short",
+  "category": "handwriting",
+  "subsets": [
+   "latin",
+   "latin-ext"
+  ],
+  "weights": [
+   400
+  ],
+  "styles": [
+   "normal"
+  ],
+  "variable": false,
+  "license": "OFL-1.1",
+  "attribution": "Copyright 2026 The Yuyu Font Project Authors (https://github.com/JuliaGarciaLopez/Yuyu-Font)",
+  "version": "5.3.1",
+  "type": "google"
+ }
+]
