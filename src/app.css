@@ -73,6 +73,11 @@ wa-details.more{margin-top:16px}
 .lib small{display:block;font-size:var(--wa-font-size-xs);color:var(--wa-color-text-quiet)}
 .nm{display:grid;place-items:center;width:20px;height:20px;border:1.3px solid currentColor;border-radius:4px;font-size:8px;font-weight:700;flex:none}
 .reset{width:100%;margin-top:22px}
+fieldset.lockable{border:0;margin:0;padding:0;min-width:0}
+fieldset.lockable:disabled{opacity:.75}
+fieldset.lockable:disabled .tile{cursor:not-allowed}
+.lockednote{margin-bottom:14px}
+.lockednote wa-button{display:block;margin-top:8px}
 .empty{font-size:var(--wa-font-size-s);color:var(--wa-color-text-quiet);margin:0}
 
 /* lockups: icon sized and placed by fitLockups() */

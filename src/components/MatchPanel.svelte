@@ -1,5 +1,5 @@
 <script>
-  import { app, spin, setLock, filters, excluded, saves, restore, fromRecord, toast } from "../lib/store.svelte.js";
+  import { app, spin, setLock, canSpin, filters, excluded, saves, restore, fromRecord, toast } from "../lib/store.svelte.js";
   import { licGroup } from "../lib/iconify.js";
   import { WEIGHT_NAMES, fontPage } from "../lib/fonts.js";
   import { iconPage } from "../lib/render.js";
@@ -9,7 +9,7 @@
 
   const v = $derived(app.view);
   const cur = $derived(app.cur);
-  const ok = $derived(!!v && v.poolStyles.length > 0 && v.poolFonts.length > 0);
+  const ok = $derived(canSpin(v));
   const ip = $derived(cur ? iconPage(cur, app.q) : null);
   const fp = $derived(cur ? fontPage(cur.font) : null);
   const credit = $derived(cur && ["by", "sa", "nc"].includes(licGroup(cur.style.lib.license)));
@@ -34,7 +34,7 @@
 <section class="panel rightcol" aria-label="Pairing details">
   <p class="eyebrow">Spin</p>
   <wa-button class="spin" variant="danger" size="l" id="spin" disabled={!ok} loading={app.spinning} onclick={spin}>
-    <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Spin again
+    <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Spin
   </wa-button>
   <div class="keep" role="group" aria-label="Keep when spinning">
     <span>Keep</span>

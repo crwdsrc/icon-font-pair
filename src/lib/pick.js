@@ -14,7 +14,9 @@ export function sameSet(st, pool) {
   return c.find((s) => s.tpl === st.tpl) || c.find((s) => s.fill === st.fill) || c[0] || null;
 }
 export function choose({ locks: [li, lf, lw], cur }, poolStyles, poolFonts) {
-  const style = (li && cur && (poolStyles.find((s) => s.id === cur.style.id) || sameSet(cur.style, poolStyles))) || randomStyle(poolStyles);
+  const style = li && cur
+    ? poolStyles.find((s) => s.id === cur.style.id) || sameSet(cur.style, poolStyles) || cur.style
+    : randomStyle(poolStyles);
   const font = lf && cur ? cur.font : rnd(poolFonts);
   const weight = lw && cur ? nearestWeight(font, cur.weight) : rnd(fontWeights(font));
   const italic = hasItalic(font) && (lw && cur ? cur.italic : Math.random() < 0.2);

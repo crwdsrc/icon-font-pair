@@ -45,7 +45,7 @@ export function recompute() {
   }[w.status] || [`Found in ${w.sets} icon set${w.sets === 1 ? "" : "s"}${w.related ? `, ${w.related} through a related word` : ""}.${w.status === "loading" ? ` Loading shapes, ${w.loaded} of ${w.sets}.` : ""}`, false];
   // why the spin can't run, and filters to remove
   const block = { waiting: false, lines: [], fixes: [] };
-  if (!poolStyles.length) {
+  if (!poolStyles.length && !(app.locks[0] && app.cur)) {
     if (!STYLES.length && (w.status === "search" || w.status === "loading")) { block.waiting = true; block.lines.push(`Loading icons for “${w.raw}”.`); }
     else if (w.status === "offline") block.lines.push("Couldn't reach the Iconify API, so there are no icons to spin.");
     else if (!STYLES.length) block.lines.push(`No icon set has an icon for “${w.raw}”. Try a simpler word.`);
@@ -56,7 +56,7 @@ export function recompute() {
       block.fixes.push(...(outs.length ? outs : [{ g: "all", label: "all icon filters", n: STYLES.filter(ICON_GROUPS.libs).length }]).map((x) => ({ ...x, kind: "icon", unit: "style" })));
     }
   }
-  if (!poolFonts.length) {
+  if (!poolFonts.length && !(app.locks[1] && app.cur)) {
     block.lines.push("No font fits these filters.");
     const outs = wayOut("font", FB);
     block.fixes.push(...(outs.length ? outs : [{ g: "all", label: "all font filters", n: FONTS.filter(FONT_GROUPS.excluded).length }]).map((x) => ({ ...x, kind: "font", unit: "font" })));
@@ -81,21 +81,25 @@ onWordChange(recompute);
 
 // ---------- filter actions ----------
 const toggle = (set, v) => (set.has(v) ? set.delete(v) : set.add(v));
+// filters for a kept icon set or typeface are switched off
+const iconLocked = () => app.locks[0] && !!app.cur, fontLocked = () => app.locks[1] && !!app.cur;
 const after = (note) => { if (note) toast(note); recompute(); };
 export const filters = {
   toggleIcon(group, v) {
+    if (iconLocked()) return;
     toggle(IF[group], v);
     after(group === "fill" ? resolveIconFill() : group === "vis" && v === "monoline" ? resolveMonoline() : null);
   },
-  setIconSize(v) { IF.size = +v; recompute(); },
-  toggleFont(group, v) { toggle(FF[group], v); recompute(); },
-  setFontCats(list) { FF.cat.clear(); list.forEach((c) => FF.cat.add(c)); recompute(); },
+  setIconSize(v) { if (iconLocked()) return; IF.size = +v; recompute(); },
+  toggleFont(group, v) { if (fontLocked()) return; toggle(FF[group], v); recompute(); },
+  setFontCats(list) { if (fontLocked()) return; FF.cat.clear(); list.forEach((c) => FF.cat.add(c)); recompute(); },
   setFont(k, v) {
+    if (fontLocked()) return;
     FF[k] = v;
     after(k === "weight" ? resolveFontWeight() : k === "width" || k === "style" ? resolveFontVariable() : null);
   },
-  setLib(prefix, on) { on ? IF.libsOff.delete(prefix) : IF.libsOff.add(prefix); recompute(); },
-  allLibs(on) { if (on) IF.libsOff.clear(); else STYLES.forEach((s) => IF.libsOff.add(s.prefix)); recompute(); },
+  setLib(prefix, on) { if (iconLocked()) return; on ? IF.libsOff.delete(prefix) : IF.libsOff.add(prefix); recompute(); },
+  allLibs(on) { if (iconLocked()) return; if (on) IF.libsOff.clear(); else STYLES.forEach((s) => IF.libsOff.add(s.prefix)); recompute(); },
   clear(kind, g) { (kind === "icon" ? ICON_CLEAR : FONT_CLEAR)[g](); if (kind === "font" && g === "excluded") syncExcluded(); recompute(); toast("Filter removed"); },
   reset() { resetFilters(); recompute(); toast("Filters reset. Excluded families stay excluded."); },
 };
@@ -105,6 +109,7 @@ function syncExcluded() { app.excluded = [...FF.excluded].sort(); store(KEYS.exc
 export const excluded = {
   // returns a hint for the form
   add(raw) {
+    if (fontLocked()) return null;
     const q = raw.trim().toLowerCase(); if (!q) return null;
     let name = FONT_BY_LOWER.get(q);
     if (!name) {
@@ -121,8 +126,8 @@ export const excluded = {
     if (app.cur?.font.f === name && app.locks[1]) setLock(1, false);
     syncExcluded(); recompute();
   },
-  remove(name) { FF.excluded.delete(name); syncExcluded(); recompute(); },
-  clear() { FF.excluded.clear(); syncExcluded(); recompute(); },
+  remove(name) { if (fontLocked()) return; FF.excluded.delete(name); syncExcluded(); recompute(); },
+  clear() { if (fontLocked()) return; FF.excluded.clear(); syncExcluded(); recompute(); },
 };
 
 // ---------- word ----------
@@ -146,10 +151,12 @@ async function ensureLoaded(p) {
   await Promise.all([loadIconItems([{ prefix: p.style.prefix, name: p.icon }]), loadNav(p.style), loadFont(p.font, p.weight, p.italic, app.text), loadFont(p.font, subWeight(p), false, app.text)]);
   loadedPairs.push([p.font, p.weight, p.italic]);
 }
-export function setLock(i, on) { const l = [...app.locks]; l[i] = on; app.locks = l; }
+export function setLock(i, on) { const l = [...app.locks]; l[i] = on; app.locks = l; recompute(); }
+// a kept icon set or typeface doesn't need anything left in its pool
+export const canSpin = (v = app.view) => !!v && (app.locks[0] && app.cur ? true : v.poolStyles.length > 0) && (app.locks[1] && app.cur ? true : v.poolFonts.length > 0);
 export async function spin() {
   const { poolStyles, poolFonts } = app.view;
-  if (app.spinning || !poolStyles.length || !poolFonts.length) return;
+  if (app.spinning || !canSpin()) return;
   app.spinning = true; app.status = "Spinning";
   const pick = choose({ locks: app.locks, cur: app.cur }, poolStyles, poolFonts);
   const ready = ensureLoaded(pick);
