@@ -52,7 +52,7 @@
       {#each v.block.lines as line}<span>{line}</span>{/each}
       {#each v.block.fixes as x (x.kind + x.g)}
         <wa-button size="s" variant="danger" appearance="outlined" class="fix" data-fix={`${x.kind}:${x.g}`} onclick={() => filters.clear(x.kind, x.g)}>
-          Remove {x.label}<b slot="end">{x.n.toLocaleString()} {x.unit}{x.n === 1 ? "" : "s"}</b>
+          {x.g === "decor" ? "Show decorative" : `Remove ${x.label}`}<b slot="end">{x.n.toLocaleString()} {x.unit}{x.n === 1 ? "" : "s"}</b>
         </wa-button>
       {/each}
     {/if}

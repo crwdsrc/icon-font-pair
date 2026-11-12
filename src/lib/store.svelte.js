@@ -3,16 +3,18 @@
 import { FONTS, FONT_BY_NAME, FONT_BY_LOWER, nearestWeight, loadFont } from "./fonts.js";
 import { STYLES, WORD, SETS, searchWord, searchSeq, onWordChange, loadIconItems, loadNav, setFromInfo } from "./iconify.js";
 import { IF, FF, ICON_GROUPS, FONT_GROUPS, facetBase, computeFacets, wayOut, ICON_CLEAR, FONT_CLEAR, resetFilters,
-  resolveIconFill, resolveMonoline, hasWeight } from "./filters.js";
+  resolveIconFill, resolveMonoline, hasWeight, SHARED } from "./filters.js";
 import { choose, sameSet } from "./pick.js";
 import { subWeight } from "./render.js";
 import { rnd, sleep, reducedMotion } from "./util.js";
 
 const load = (k, fallback) => { try { const v = localStorage.getItem(k); return v == null ? fallback : JSON.parse(v); } catch { return fallback; } };
 const store = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } };
-const KEYS = { saved: "pairing-saved-spins", excluded: "pairing-excluded-families", theme: "pairing-theme", dir: "pairing-direction" };
+const KEYS = { saved: "pairing-saved-spins", excluded: "pairing-excluded-families", theme: "pairing-theme", dir: "pairing-direction", decor: "pairing-hide-decorative" };
+const modeFromHash = () => (location.hash === "#suggestions" ? "suggest" : "random");
 
 class App {
+  mode = $state(modeFromHash()); // "random" or "suggest"
   q = $state("download");
   text = $state("Download all");
   locks = $state([false, false, false]);
@@ -74,6 +76,7 @@ export function recompute() {
     fcount: `${poolFonts.length.toLocaleString()} of ${FONTS.length.toLocaleString()} fonts`,
     facets: computeFacets(STYLES, IB, FB), block, sets,
     ff: { src: FF.src, cat: [...FF.cat], weight: FF.weight, width: FF.width, style: FF.style, mood: FF.mood, script: FF.script, q: FF.q, search: FF.search },
+    decor: { on: SHARED.hideDecor, fonts: FONTS.length - FONTS.filter(FONT_GROUPS.decor).length, sets: new Set(STYLES.filter((s) => !ICON_GROUPS.decor(s)).map((s) => s.prefix)).size },
     if: { size: IF.size, weightNote: IF.weight.size > 0 && ([...IF.fill].some((x) => x === "filled" || x === "multicolor") || !IF.fill.size) },
   };
 }
@@ -81,8 +84,9 @@ onWordChange(recompute);
 
 // ---------- filter actions ----------
 const toggle = (set, v) => (set.has(v) ? set.delete(v) : set.add(v));
-// filters for a kept icon set or typeface are switched off
-const iconLocked = () => app.locks[0] && !!app.cur, fontLocked = () => app.locks[1] && !!app.cur;
+// in the randomizer, filters for a kept icon set or typeface are switched off; suggestions ignore keeps
+export const iconLocked = () => app.mode === "random" && app.locks[0] && !!app.cur;
+export const fontLocked = () => app.mode === "random" && app.locks[1] && !!app.cur;
 const after = (note) => { if (note) toast(note); recompute(); };
 export const filters = {
   toggleIcon(group, v) {
@@ -90,6 +94,7 @@ export const filters = {
     toggle(IF[group], v);
     after(group === "fill" ? resolveIconFill() : group === "vis" && v === "monoline" ? resolveMonoline() : null);
   },
+  setDecor(on) { SHARED.hideDecor = on; store(KEYS.decor, on); recompute(); },
   setIconSize(v) { if (iconLocked()) return; IF.size = +v; recompute(); },
   toggleFont(group, v) { if (fontLocked()) return; toggle(FF[group], v); recompute(); },
   setFontCats(list) { if (fontLocked()) return; FF.cat.clear(); list.forEach((c) => FF.cat.add(c)); recompute(); },
@@ -108,8 +113,13 @@ export const filters = {
   },
   setLib(prefix, on) { if (iconLocked()) return; on ? IF.libsOff.delete(prefix) : IF.libsOff.add(prefix); recompute(); },
   allLibs(on) { if (iconLocked()) return; if (on) IF.libsOff.clear(); else STYLES.forEach((s) => IF.libsOff.add(s.prefix)); recompute(); },
-  clear(kind, g) { (kind === "icon" ? ICON_CLEAR : FONT_CLEAR)[g](); if (kind === "font" && g === "excluded") syncExcluded(); recompute(); toast("Filter removed"); },
-  reset() { resetFilters(); recompute(); toast("Filters reset. Excluded families stay excluded."); },
+  clear(kind, g) {
+    (kind === "icon" ? ICON_CLEAR : FONT_CLEAR)[g]();
+    if (kind === "font" && g === "excluded") syncExcluded();
+    if (g === "decor") store(KEYS.decor, false);
+    recompute(); toast("Filter removed");
+  },
+  reset() { resetFilters(); store(KEYS.decor, true); recompute(); toast("Filters reset. Excluded families stay excluded."); },
 };
 
 // ---------- excluded families ----------
@@ -221,6 +231,22 @@ export const saves = {
 export function setTheme(t) { app.theme = t; store(KEYS.theme, t); }
 export function setDir(d) { app.dir = d; store(KEYS.dir, d); }
 
+// ---------- view: randomizer or suggestions, kept in the address so either can be linked ----------
+export function setMode(m) {
+  if (app.mode === m) return;
+  app.mode = m;
+  history.replaceState(null, "", m === "suggest" ? "#suggestions" : location.pathname + location.search);
+  recompute(); // locks only switch filters off in the randomizer
+}
+addEventListener("hashchange", () => setMode(modeFromHash()));
+// open a suggestion in the randomizer
+export async function openPairing(p) {
+  await restore({ ...p, text: app.text });
+  app.history = [{ ...p, text: app.text }, ...app.history].slice(0, 10);
+  setMode("random");
+  scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
+}
+
 // ---------- start ----------
 export async function start() {
   app.saved = load(KEYS.saved, []).filter((x) => x && x.v === 2 && x.p && x.i && FONT_BY_NAME.has(x.f));
@@ -228,6 +254,7 @@ export async function start() {
   app.excluded = [...FF.excluded].sort();
   if (load(KEYS.theme, "light") === "dark") app.theme = "dark";
   if (load(KEYS.dir, "ltr") === "rtl") app.dir = "rtl";
+  SHARED.hideDecor = load(KEYS.decor, true) !== false;
   const { ready } = searchWord(app.q);
   await ready;
   recompute(); // shapes stream in with throttled redraws, so take a fresh view before the first pick

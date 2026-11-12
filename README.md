@@ -1,12 +1,18 @@
 # Icon + Type
 
-Spin to pair an icon set with a free font. A [crwdsrc.dev](https://crwdsrc.dev) experiment.
+Pair an icon set with a free font, by spinning or from design systems that ship them together. A [crwdsrc.dev](https://crwdsrc.dev) experiment.
 
-Type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
+The page has two views, switched with the tabs at the top. Both use the same word, text and filters.
+
+- **Randomizer:** type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
+- **Suggestions:** icon sets and fonts that production design systems use together, such as Carbon with IBM Plex Sans or shadcn/ui with Lucide and Geist. Each card shows your word and text in that pair, what the system does with it, and links to the system's own docs. Pairs that fail a filter say which one, with a button to remove it. Open any pair in the randomizer to get its code. The link `#suggestions` opens this view.
+
+Features:
 
 - Icons come from every public icon set on [Iconify](https://iconify.design). A word search finds the word and its style variants in each set. "download", for example, turns up in about 175 sets.
 - Fill, line weight, corner shape and level of detail are read from each icon's SVG, so nothing is tagged by hand.
 - 2,053 fonts: the Google Fonts catalog plus 148 Fontsource families that are not on Google Fonts.
+- Hide decorative fonts and icons, on by default: hides handwriting fonts, decorative classes (script, brush, stencil, art deco, woodtype, blackletter, pixel and similar), display fonts with a loud mood such as Awkward, Vintage or Playful, and holiday, emoji, flag and app icon sets. About 800 fonts are hidden.
 - Icon filters: style (outline, filled, duotone, color), stroke weight, traits, design grid, license, icon set category, set size and individual icon sets.
 - Font weight: pick a weight from Thin 100 to Black 900 and every spin uses it, with only fonts that have it in the pool. Any weight picks at random.
 - Font filters: source, category, width, style, mood, visual style, classification, license, script, quality, name and excluded families.
@@ -49,11 +55,13 @@ The thresholds sit at the top of the "reading shapes" section of that file.
 ```
 index.html                     Vite entry
 src/main.js                    Loads Web Awesome, styles and the app
-src/App.svelte                 Header, three-column layout, footer
-src/components/                Create panel, preview, spin panel, settings and small controls
+src/App.svelte                 Header, view tabs, layout, footer
+src/components/                Create panel, preview, spin panel, suggestions, settings and small controls
 src/lib/iconify.js             Iconify search, shape loading and trait reading
 src/lib/filters.js             Filter definitions, counts per option and the way out of empty results
 src/lib/pick.js                Random picking that respects locks
+src/lib/systems.js             Design system pairings for Suggestions, with sources
+src/lib/suggest.js             Checks those pairings against the word and filters
 src/lib/fonts.js               Font catalog, labels and loaders
 src/lib/render.js              Lockup markup, icon alignment, links and the code snippet
 src/lib/store.svelte.js        App state and actions
@@ -158,6 +166,7 @@ To run the image anywhere else, see [With Docker](#with-docker). Pass `--build-a
 
 - **Google Fonts:** bump `google-font-metadata`. To refresh the tags, download `https://raw.githubusercontent.com/google/fonts/main/tags/all/families.csv` to `vendor/google-fonts-tags.csv`.
 - **Fontsource:** run `node scripts/update-fontsource.cjs`, or pass new ids to add families. Hand-made classifications for families without Google tags live in `HAND` in `scripts/build-data.cjs`.
+- **Suggestions:** each pairing in `src/lib/systems.js` names the Iconify prefix, the font family as it appears in the catalog, the weights the system documents and links to its docs. Add one only when both halves are free and the system's own docs confirm them.
 - **Icons:** nothing to update. New sets and icons on Iconify show up on their own. Per-icon page links for Lucide, Tabler, Bootstrap Icons and Boxicons are in `iconPage()` in `src/lib/render.js`. Other sets open the icon's page on Iconify.
 
 ## Configuration

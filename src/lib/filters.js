@@ -17,11 +17,16 @@ export const ILIC = [["perm", "Permissive"], ["pd", "Public domain"], ["by", "Cr
 export const ICAT = [["UI 24px", "UI 24 px"], ["Material", "Material"], ["UI 16px / 32px", "UI 16 and 32 px"], ["UI Other / Mixed Grid", "UI mixed grid"], ["UI Multicolor", "UI color"],
   ["Emoji", "Emoji"], ["Thematic", "Thematic"], ["High Detail", "High detail"], ["Programming", "Programming"], ["Logos", "Logos"], ["Archive / Unmaintained", "Unmaintained"], ["other", "Other"]];
 const catKey = (c) => (/^High Detail/.test(c) ? "High Detail" : ICAT.some(([k]) => k === c) ? c : "other");
+// novelty sets: seasonal art, emoji, flags and app tiles rather than interface icons
+const NOVELTY_CATS = ["Holiday / Seasonal", "Emoji", "Flags", "Apps", "High Detail Multicolor"];
 export const ISIZE = [[0, "Any size"], [500, "500+ icons"], [1000, "1,000+ icons"], [2500, "2,500+ icons"]];
 
 // ---------- font options ----------
 const hasMood = (f, m, min = 50) => f.m.some(([n, v]) => n === m && v >= min);
 const DECOR = ["blobby", "wacky", "distressed", "brush", "blackletter", "woodtype", "art-deco", "stencil", "fat-face", "informal-script", "formal-script", "handwritten", "pixel"];
+// decorative: handwriting, a decorative class, or a display face with a loud mood
+const LOUD = ["Loud", "Playful", "Childlike", "Awkward", "Fancy", "Excited", "Rugged", "Vintage", "Cute", "Artistic"];
+const decorFont = (f) => f.c === "handwriting" || DECOR.includes(f.s) || (f.c === "display" && LOUD.some((m) => hasMood(f, m, 60)));
 const CLEAN_SANS = ["geometric", "neo-grotesque", "grotesque", "humanist", "superellipse", "rounded", "glyphic"];
 const FVIS_TEST = {
   modern: (f) => ["geometric", "neo-grotesque", "superellipse", "grotesque", "techno"].includes(f.s) || hasMood(f, "Futuristic") || hasMood(f, "Innovative"),
@@ -53,10 +58,13 @@ const weightOk = (v, f) => !v || hasWeight(f, +v);
 const styleOptOk = (v, f) => (!v ? true : v === "italic" ? !!f.i : v === "variable" ? !!f.v : v === "static" ? !f.v : v === "popular" ? !!f.p : true);
 
 // ---------- state ----------
+// one switch for both sides, on by default
+export const SHARED = { hideDecor: true };
 export const IF = { fill: new Set(), weight: new Set(), vis: new Set(), grid: new Set(), lic: new Set(), cat: new Set(), libsOff: new Set(), size: 0 };
 export const FF = { src: "all", cat: new Set(), weight: "", width: "", style: "", mood: "", vis: new Set(), sub: new Set(), lic: new Set(), script: "", q: 0, search: "", excluded: new Set() };
 
 export const ICON_GROUPS = {
+  decor: (s) => !SHARED.hideDecor || !NOVELTY_CATS.includes(s.lib.category),
   fill: (s) => !IF.fill.size || IF.fill.has(s.fill),
   weight: (s) => !IF.weight.size || !stroked(s) || [...IF.weight].some((k) => WEIGHT_GROUP[k].includes(s.weight)),
   vis: (s) => !IF.vis.size || [...IF.vis].some((k) => s.traits.has(k)),
@@ -67,6 +75,7 @@ export const ICON_GROUPS = {
   size: (s) => !IF.size || s.count >= IF.size,
 };
 export const FONT_GROUPS = {
+  decor: (f) => !SHARED.hideDecor || !decorFont(f),
   excluded: (f) => !FF.excluded.has(f.f),
   src: (f) => FF.src === "all" || FF.src === (f.src === "fs" ? "fs" : "google"),
   cat: (f) => !FF.cat.size || FF.cat.has(f.c),
@@ -148,7 +157,8 @@ export function computeFacets(STYLES, IB, FB) {
 
 // ---------- a way out when nothing is left ----------
 const pick = (list, keys) => [...keys].map((x) => list.find(([k]) => k === x)?.[1] ?? x).join(", ");
-const ICON_GROUP_LABEL = {
+export const ICON_GROUP_LABEL = {
+  decor: () => "Hide decorative",
   fill: () => `Icon style: ${[...IF.fill].map((x) => FILL_NAME[x]).join(", ")}`,
   weight: () => `Stroke weight: ${pick(IWEIGHTS, IF.weight)}`,
   vis: () => `Icon traits: ${pick(IVIS, IF.vis)}`,
@@ -158,7 +168,8 @@ const ICON_GROUP_LABEL = {
   libs: () => `${IF.libsOff.size} icon sets turned off`,
   size: () => `Set size: ${IF.size}+ icons`,
 };
-const FONT_GROUP_LABEL = {
+export const FONT_GROUP_LABEL = {
+  decor: () => "Hide decorative",
   excluded: () => `${FF.excluded.size} excluded families`,
   src: () => `Source: ${FF.src === "fs" ? "Fontsource" : "Google Fonts"}`,
   cat: () => `Category: ${pick(FCAT, FF.cat)}`,
@@ -177,15 +188,17 @@ export const ICON_CLEAR = {
   all: () => { for (const k of ["fill", "weight", "vis", "grid", "lic", "cat"]) IF[k].clear(); IF.size = 0; },
   fill: () => IF.fill.clear(), weight: () => IF.weight.clear(), vis: () => IF.vis.clear(), grid: () => IF.grid.clear(),
   lic: () => IF.lic.clear(), cat: () => IF.cat.clear(), libs: () => IF.libsOff.clear(), size: () => (IF.size = 0),
+  decor: () => (SHARED.hideDecor = false),
 };
 export const FONT_CLEAR = {
   all: () => { for (const k of ["cat", "vis", "sub", "lic"]) FF[k].clear(); Object.assign(FF, { src: "all", weight: "", width: "", style: "", mood: "", script: "", q: 0, search: "" }); },
   excluded: () => FF.excluded.clear(), src: () => (FF.src = "all"), cat: () => FF.cat.clear(), weight: () => (FF.weight = ""), width: () => (FF.width = ""),
   style: () => (FF.style = ""), mood: () => (FF.mood = ""), vis: () => FF.vis.clear(), sub: () => FF.sub.clear(), lic: () => FF.lic.clear(),
   script: () => (FF.script = ""), q: () => (FF.q = 0), search: () => (FF.search = ""),
+  decor: () => (SHARED.hideDecor = false),
 };
-const isDefaultIcon = (g) => (g === "size" ? !IF.size : !IF[g === "libs" ? "libsOff" : g].size);
-const isDefaultFont = (g) => (["cat", "vis", "sub", "lic", "excluded"].includes(g) ? !FF[g].size : g === "src" ? FF.src === "all" : !FF[g]);
+const isDefaultIcon = (g) => (g === "decor" ? !SHARED.hideDecor : g === "size" ? !IF.size : !IF[g === "libs" ? "libsOff" : g].size);
+const isDefaultFont = (g) => (g === "decor" ? !SHARED.hideDecor : ["cat", "vis", "sub", "lic", "excluded"].includes(g) ? !FF[g].size : g === "src" ? FF.src === "all" : !FF[g]);
 // up to three filters to remove, the ones that bring back the most results first
 export function wayOut(kind, B) {
   const labels = kind === "icon" ? ICON_GROUP_LABEL : FONT_GROUP_LABEL;
@@ -194,5 +207,5 @@ export function wayOut(kind, B) {
 }
 export function resetFilters() {
   for (const s of [IF.fill, IF.weight, IF.vis, IF.grid, IF.lic, IF.cat, IF.libsOff, FF.cat, FF.vis, FF.sub, FF.lic]) s.clear();
-  IF.size = 0; Object.assign(FF, { src: "all", weight: "", width: "", style: "", mood: "", script: "", q: 0, search: "" });
+  IF.size = 0; SHARED.hideDecor = true; Object.assign(FF, { src: "all", weight: "", width: "", style: "", mood: "", script: "", q: 0, search: "" });
 }

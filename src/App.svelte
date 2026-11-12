@@ -1,11 +1,12 @@
 <script>
   import { onMount } from "svelte";
-  import { app, start, spin } from "./lib/store.svelte.js";
+  import { app, start, spin, setMode } from "./lib/store.svelte.js";
   import { fitLockups } from "./lib/render.js";
   import { ui } from "./lib/ui-icons.js";
   import CreatePanel from "./components/CreatePanel.svelte";
   import Preview from "./components/Preview.svelte";
   import MatchPanel from "./components/MatchPanel.svelte";
+  import Suggestions from "./components/Suggestions.svelte";
   import Settings from "./components/Settings.svelte";
 
   // Source repository: change this one value and every GitHub link updates.
@@ -22,9 +23,19 @@
     return () => { removeEventListener("resize", refit); document.fonts?.removeEventListener?.("loadingdone", refit); };
   });
 
-  // Space spins, unless focus is in a control that uses Space itself
+  const MODES = [["random", "Randomizer"], ["suggest", "Suggestions"]];
+  // arrow keys move between the two tabs
+  function onTabKey(e) {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const next = app.mode === "random" ? "suggest" : "random";
+    setMode(next);
+    document.getElementById(`tab-${next}`)?.focus();
+  }
+
+  // in the randomizer, Space spins, unless focus is in a control that uses Space itself
   function onkeydown(e) {
-    if (e.code !== "Space" || e.repeat) return;
+    if (e.code !== "Space" || e.repeat || app.mode !== "random") return;
     const el = document.activeElement, tag = el?.tagName || "";
     if (["INPUT", "TEXTAREA", "SELECT", "BUTTON", "SUMMARY", "A"].includes(tag) || tag.startsWith("WA-")) return;
     e.preventDefault(); spin();
@@ -47,6 +58,7 @@
           <li>Type an icon name or a meaning, such as growth or money, and the text you want to set.</li>
           <li>Spin to draw an icon set from Iconify, a typeface and a weight. Keep any of the three to spin only the others.</li>
           <li>Save pairings you like. They stay in this browser.</li>
+          <li>Suggestions lists icon sets and fonts that real design systems ship together, filtered the same way.</li>
         </ul>
       </div>
     </wa-popover>
@@ -55,10 +67,23 @@
   </div>
 </header>
 
-<main class="layout">
+<div class="modebar">
+  <div class="modes" role="tablist" aria-label="View">
+    {#each MODES as [m, label] (m)}
+      <button role="tab" id={`tab-${m}`} aria-selected={app.mode === m} aria-controls="main" tabindex={app.mode === m ? 0 : -1}
+        onclick={() => setMode(m)} onkeydown={onTabKey}>{label}</button>
+    {/each}
+  </div>
+</div>
+
+<main class="layout" class:sgview={app.mode === "suggest"} id="main" role="tabpanel" aria-labelledby={`tab-${app.mode}`}>
   <CreatePanel />
-  <Preview />
-  <MatchPanel />
+  {#if app.mode === "random"}
+    <Preview />
+    <MatchPanel />
+  {:else}
+    <Suggestions />
+  {/if}
 </main>
 
 <footer class="foot">

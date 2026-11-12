@@ -10,8 +10,9 @@
   import Picker from "./Picker.svelte";
 
   const v = $derived(app.view);
-  const fontLocked = $derived(app.locks[1] && !!app.cur);
-  const iconLocked = $derived(app.locks[0] && !!app.cur);
+  // keeps only matter in the randomizer
+  const fontLocked = $derived(app.mode === "random" && app.locks[1] && !!app.cur);
+  const iconLocked = $derived(app.mode === "random" && app.locks[0] && !!app.cur);
   // with a kept typeface, the weight choices are that font's weights
   const weightOptions = $derived(!v ? [] : fontLocked ? f.fweight.map((o) => ({ ...o, n: null, zero: !!o.v && !hasWeight(app.cur.font, +o.v) })) : f.fweight);
   const f = $derived(v?.facets);
@@ -49,6 +50,11 @@
   </div>
 
   {#if v}
+    <div class="field decor">
+      <wa-switch checked={v.decor.on} onchange={(e) => filters.setDecor(e.target.checked)}
+        hint="Handwriting, script, stencil, pixel and loud display fonts, plus holiday, emoji, flag and app icon sets.">Hide decorative fonts and icons</wa-switch>
+      {#if v.decor.on}<p class="help">Hiding {v.decor.fonts.toLocaleString()} fonts{v.decor.sets ? ` and ${v.decor.sets} icon set${v.decor.sets === 1 ? "" : "s"} for this word` : ""}.</p>{/if}
+    </div>
     <wa-divider></wa-divider>
     {#if fontLocked}
       <wa-callout variant="neutral" size="s" class="lockednote"><span slot="icon" class="ico">{@html ui("lock")}</span>You're keeping the typeface, so font filters are off.
@@ -58,7 +64,9 @@
     <div class="field weightpick">
       <span class="flabel" id="fweightLbl">Font weight</span>
       <Picker label="Font weight" options={weightOptions} value={v.ff.weight} onPick={(x) => filters.setWeight(x)} />
-      <p class="help">{v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font."}</p>
+      <p class="help">{app.mode === "suggest"
+        ? (v.ff.weight ? "Suggestions use this weight when the font has it." : "Suggestions use the weight each design system sets for body text.")
+        : (v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font.")}</p>
     </div>
     <!-- a kept typeface ignores the font filters, so they are switched off until it is unlocked -->
     <fieldset class="lockable" disabled={fontLocked}>
