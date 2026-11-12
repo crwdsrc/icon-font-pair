@@ -18,7 +18,7 @@
   const ic = $derived(p ? iconSVG(p.style.prefix, p.icon) || "" : "");
   const sw = $derived(p ? subWeight(p) : 400);
   const navs = $derived(p && !shuffle ? [[ic, capWord(app.q)], [iconFor(p, "home"), "Today"], [iconFor(p, "compass"), "Explore"], [iconFor(p, "user"), "Profile"]] : []);
-  const code = $derived(cur ? snippet(cur, app.text, app.size, app.strokeMatch) : "");
+  const code = $derived(cur ? snippet(cur, app.text, app.size) : "");
   const ip = $derived(cur ? iconPage(cur, app.q) : null);
   const fp = $derived(cur ? fontPage(cur.font) : null);
 

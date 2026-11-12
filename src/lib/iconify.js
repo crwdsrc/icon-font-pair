@@ -74,11 +74,11 @@ export function loadIconItems(items) { // items: [{ prefix, name }]
   return Promise.all(waits);
 }
 let uid = 0;
-export function iconSVG(prefix, name, extraAttr = "", noUid = false) {
+export function iconSVG(prefix, name) {
   const ic = ICONS.get(`${prefix}:${name}`); if (!ic) return null;
   let body = ic.body;
-  if (!noUid && body.includes('id="')) { const u = "_" + (++uid).toString(36); body = body.replace(/id="([^"]+)"/g, `id="$1${u}"`).replace(/url\(#([^)]+)\)/g, `url(#$1${u})`).replace(/href="#([^"]+)"/g, `href="#$1${u}"`); }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${ic.vb.join(" ")}" aria-hidden="true" ${extraAttr}>${body}</svg>`;
+  if (body.includes('id="')) { const u = "_" + (++uid).toString(36); body = body.replace(/id="([^"]+)"/g, `id="$1${u}"`).replace(/url\(#([^)]+)\)/g, `url(#$1${u})`).replace(/href="#([^"]+)"/g, `href="#$1${u}"`); }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${ic.vb.join(" ")}" aria-hidden="true">${body}</svg>`;
 }
 
 // ---------- reading names ----------

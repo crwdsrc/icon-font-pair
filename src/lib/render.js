@@ -71,16 +71,13 @@ export function iconPage(p, query) {
   return { url: `https://icon-sets.iconify.design/${p.style.prefix}/${e(n)}/`, site: "Iconify" };
 }
 
-export function snippet(p, text, size, strokeMatch) {
-  const sw = strokeFor(p.style, p.weight, strokeMatch);
-  let svg = iconSVG(p.style.prefix, p.icon, "", true) || "";
-  if (sw) svg = svg.replace(/stroke-width="[^"]*"/g, `stroke-width="${sw}"`);
-  svg = svg.replace(' aria-hidden="true" >', ' aria-hidden="true">');
+// The copied code loads the icon with Iconify's <iconify-icon> web component, which fetches the shape from the
+// Iconify API, so the snippet stays a single short tag instead of the full SVG.
+export function snippet(p, text, size) {
   const fam = encodeURIComponent(p.font.f).replace(/%20/g, "+");
   const axis = p.italic ? `:ital,wght@1,${p.weight}` : p.font.w.length === 1 && !p.font.v ? "" : `:wght@${p.weight}`;
   const L = p.style.lib, g = licGroup(L.license);
   const credit = ["by", "sa", "nc"].includes(g) ? `\n<!-- Icon: ${L.name}${L.author ? ` by ${L.author}` : ""}, ${L.licTitle}. Credit the author where you use it${g === "nc" ? ", and don't use it commercially" : ""}. -->` : "";
-  const alt = `\n<!-- Or let Iconify draw it: <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js"></script> then <iconify-icon icon="${p.style.prefix}:${p.icon}"></iconify-icon> -->`;
   const fb = { sans: "sans-serif", serif: "serif", mono: "monospace", display: "sans-serif", handwriting: "cursive" }[p.font.c];
   const head = p.font.src === "fs"
     ? `<!-- Fontsource via jsDelivr. To self-host: npm install @fontsource/${p.font.id} and import "@fontsource/${p.font.id}/${p.weight}${p.italic ? "-italic" : ""}.css" -->
@@ -96,10 +93,11 @@ export function snippet(p, text, size, strokeMatch) {
     : `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=${fam}${axis}&display=swap" rel="stylesheet">`;
-  return `${head}${credit}${alt}
+  return `${head}
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@3/dist/iconify-icon.min.js"></script>${credit}
 
 <span class="lockup">
-  ${svg}
+  <iconify-icon icon="${p.style.prefix}:${p.icon}"></iconify-icon>
   <span>${esc(text.trim())}</span>
 </span>
 
@@ -114,6 +112,6 @@ export function snippet(p, text, size, strokeMatch) {
   line-height: 1.08;
 }
 /* Sized to the cap height so icon and text read at the same visual height */
-.lockup svg { width: 0.92em; height: 0.92em; flex: none; }
+.lockup iconify-icon { font-size: 0.92em; flex: none; }
 </style>`;
 }
