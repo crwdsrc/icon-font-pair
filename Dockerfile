@@ -6,7 +6,7 @@ FROM node:22-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
-# Path the site is served under, for example /experiments/icon-font-pair/. Set it as a build variable in Coolify.
+# Path the site is served under, for example /experiments/icon-type-pair/. Set it as a build variable in Coolify.
 ARG BASE_PATH=/
 ENV BASE_PATH=$BASE_PATH
 COPY index.html vite.config.js svelte.config.js ./

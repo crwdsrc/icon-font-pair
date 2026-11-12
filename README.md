@@ -132,13 +132,13 @@ Then open http://localhost:8080.
 
 ## Deploy on Coolify
 
-The live site runs at https://crwdsrc.dev/experiments/icon-font-pair from [crwdsrc/icon-font-pair](https://github.com/crwdsrc/icon-font-pair), deployed by Coolify through the `crwdsrc-deploy` GitHub App.
+The live site runs at https://crwdsrc.dev/experiments/icon-type-pair from [crwdsrc/icon-font-pair](https://github.com/crwdsrc/icon-font-pair), deployed by Coolify through the `crwdsrc-deploy` GitHub App.
 
 1. In Coolify, open the project and environment, then choose **+ New** > **Git Repository (with GitHub App)** > `crwdsrc-deploy` and pick the repository and the `main` branch.
 2. Set **Build Pack** to **Dockerfile**. Leave Base Directory at `/` and Dockerfile Location at `/Dockerfile`.
 3. Set **Ports Exposes** to `80`.
-4. Set the domain to `https://crwdsrc.dev/experiments/icon-font-pair`. Coolify routes that path to the container. Coolify's proxy handles HTTPS.
-5. Add the environment variable `BASE_PATH` with the value `/experiments/icon-font-pair/` and mark it as available at build time. Vite writes it into every asset URL.
+4. Set the domain to `https://crwdsrc.dev/experiments/icon-type-pair`. Coolify routes that path to the container. Coolify's proxy handles HTTPS.
+5. Add the environment variable `BASE_PATH` with the value `/experiments/icon-type-pair/` and mark it as available at build time. Vite writes it into every asset URL.
 6. Deploy. Pushes to `main` deploy again through the GitHub App webhook.
 
 To serve the site from the root of a domain instead, leave `BASE_PATH` unset.

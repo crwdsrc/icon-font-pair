@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 
-// BASE_PATH is the URL path the site is served from, such as /experiments/icon-font-pair/. Defaults to the root.
+// BASE_PATH is the URL path the site is served from, such as /experiments/icon-type-pair/. Defaults to the root.
 const base = (process.env.BASE_PATH || "/").replace(/\/?$/, "/");
 
 export default defineConfig({
