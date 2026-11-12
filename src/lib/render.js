@@ -72,8 +72,11 @@ export function iconPage(p, query) {
 }
 
 // The copied code loads the icon with Iconify's <iconify-icon> web component, which fetches the shape from the
-// Iconify API, so the snippet stays a single short tag instead of the full SVG.
-export function snippet(p, text, size) {
+// Iconify API, so the snippet stays a single short tag instead of the full SVG. The tag can't be restyled from outside,
+// so when the preview draws the strokes thinner or thicker than the set does, a comment says so.
+export function snippet(p, text, size, strokeMatch) {
+  const sw = strokeFor(p.style, p.weight, strokeMatch), base = p.style.stroke;
+  const strokeNote = sw && Math.abs(sw - base) > 0.05 ? `\n<!-- The preview draws this icon's strokes ${sw > base ? "thicker" : "thinner"} to match the font weight (width ${sw} instead of ${base}, in the icon's own units). <iconify-icon> keeps the set's own width. -->` : "";
   const fam = encodeURIComponent(p.font.f).replace(/%20/g, "+");
   const axis = p.italic ? `:ital,wght@1,${p.weight}` : p.font.w.length === 1 && !p.font.v ? "" : `:wght@${p.weight}`;
   const L = p.style.lib, g = licGroup(L.license);
@@ -94,7 +97,7 @@ export function snippet(p, text, size) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=${fam}${axis}&display=swap" rel="stylesheet">`;
   return `${head}
-<script src="https://cdn.jsdelivr.net/npm/iconify-icon@3/dist/iconify-icon.min.js"></script>${credit}
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@3/dist/iconify-icon.min.js"></script>${credit}${strokeNote}
 
 <span class="lockup">
   <iconify-icon icon="${p.style.prefix}:${p.icon}"></iconify-icon>
