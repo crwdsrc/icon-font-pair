@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Icon + Type: spin to pair an icon set from Iconify with a free font. Svelte and Web Awesome. A crwdsrc.dev experiment.",
+  "homepage": "https://crwdsrc.dev/experiments/icon-font-pair",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crwdsrc/icon-font-pair.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crwdsrc/icon-font-pair/issues"
+  },
   "license": "UNLICENSED",
   "engines": {
     "node": ">=20"
