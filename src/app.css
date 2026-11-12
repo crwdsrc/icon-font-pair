@@ -137,27 +137,17 @@ pre#code{margin:10px 0 0;max-height:240px;overflow:auto;background:var(--wa-colo
 .ext svg{width:13px;height:13px;flex:none;opacity:.7}
 
 /* right: match */
-.scoreline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
-.pct{font-size:56px;font-weight:500;letter-spacing:-.02em;line-height:1}
-.verdict{font-size:var(--wa-font-size-s)}
-.verdict svg{display:inline-block;vertical-align:-3px;width:16px;height:16px;margin-inline-end:6px}
-.scorelbl{font-size:var(--wa-font-size-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--wa-color-text-quiet);margin:8px 0 0}
-.spin{display:block;width:100%;margin-top:18px}
+.spin{display:block;width:100%;margin-top:16px}
 .spin::part(button){height:76px;font-size:28px}
 .spin .ico svg{width:36px;height:36px}
 .keep{display:flex;align-items:center;gap:6px;margin-top:14px;flex-wrap:wrap}
 .keep > span{font-size:var(--wa-font-size-s);color:var(--wa-color-text-quiet);margin-inline-end:2px}
 .keep .ico svg{width:14px;height:14px}
-.modes{margin-top:12px}
-.modes::part(form-control-label){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.modes wa-radio{flex:1}
 .modehelp{font-size:var(--wa-font-size-s);color:var(--wa-color-text-quiet);margin:10px 0 0;line-height:1.5}
 .modehelp.bad{color:var(--wa-color-danger-on-quiet)}
 .modehelp span{display:block;margin-top:4px}
 .modehelp .fix{display:block;width:100%;margin-top:8px}
 .modehelp .fix::part(button){justify-content:space-between;white-space:normal;text-align:start;height:auto;padding-block:8px}
-.why h2{font-size:var(--wa-font-size-l);margin:0 0 8px}
-.why p{margin:0;line-height:1.6;color:var(--wa-color-text-quiet)}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:14px 22px;margin:0;align-items:baseline}
 .kv dt{font-size:var(--wa-font-size-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--wa-color-text-quiet)}
 .kv dd{margin:0;min-width:0;overflow-wrap:anywhere}

@@ -9,18 +9,7 @@ export const FONT_BY_NAME = new Map(FONTS.map((f) => [f.f, f]));
 export const FONT_BY_LOWER = new Map(FONTS.map((f) => [f.f.toLowerCase(), f.f]));
 
 export const WEIGHT_NAMES = { 100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium", 600: "SemiBold", 700: "Bold", 800: "ExtraBold", 900: "Black" };
-const SUB_LABEL = { geometric: "Geometric", humanist: "Humanist", grotesque: "Grotesque", "neo-grotesque": "Neo-grotesque", rounded: "Rounded", superellipse: "Superellipse", glyphic: "Glyphic",
-  transitional: "Transitional", "old-style": "Old style", modern: "Modern", didone: "Didone", "fat-face": "Fat face", slab: "Slab", handwritten: "Handwritten", "informal-script": "Casual script",
-  "formal-script": "Formal script", mono: "Monospace", pixel: "Pixel", blackletter: "Blackletter", techno: "Techno", stencil: "Stencil", "art-deco": "Art deco", brush: "Brush",
-  woodtype: "Wood type", blobby: "Blobby", distressed: "Distressed", wacky: "Wacky" };
-const CAT_LABEL = { sans: "sans", serif: "serif", display: "display face", handwriting: "handwriting face", mono: "monospace" };
 export const CAT_NAME = { sans: "Sans-serif", serif: "Serif", display: "Display", handwriting: "Handwriting", mono: "Monospace" };
-export const fontDesc = (f) => {
-  const sub = f.s && SUB_LABEL[f.s];
-  if (!sub) return f.c[0].toUpperCase() + CAT_LABEL[f.c].slice(1);
-  if (["sans", "serif"].includes(f.c) && !["mono", "pixel"].includes(f.s)) return `${sub} ${f.c}`;
-  return sub;
-};
 export const fontWeights = (f) => (f.v ? [100, 200, 300, 400, 500, 600, 700, 800, 900].filter((w) => w >= f.v[0] && w <= f.v[1]) : f.w);
 export const nearestWeight = (f, w) => fontWeights(f).reduce((a, b) => (Math.abs(b - w) < Math.abs(a - w) ? b : a));
 export const hasItalic = (f) => !!f.i;

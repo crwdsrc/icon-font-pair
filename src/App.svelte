@@ -46,7 +46,6 @@
         <ul>
           <li>Type an icon name or a meaning, such as growth or money, and the text you want to set.</li>
           <li>Spin to draw an icon set from Iconify, a typeface and a weight. Keep any of the three to spin only the others.</li>
-          <li>Harmony favors pairs that match in weight and corner shape. Wild picks at random from your filters.</li>
           <li>Save pairings you like. They stay in this browser.</li>
         </ul>
       </div>

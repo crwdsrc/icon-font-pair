@@ -2,12 +2,11 @@
 
 Spin to pair an icon set with a free font. A [crwdsrc.dev](https://crwdsrc.dev) experiment.
 
-Type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight, previews them together in common UI patterns, scores the match and gives you copyable HTML and CSS.
+Type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
 
 - Icons come from every public icon set on [Iconify](https://iconify.design). A word search finds the word and its style variants in each set. "download", for example, turns up in about 175 sets.
 - Fill, line weight, corner shape and level of detail are read from each icon's SVG, so nothing is tagged by hand.
 - 2,053 fonts: the Google Fonts catalog plus 148 Fontsource families that are not on Google Fonts.
-- Harmony mode favors pairs that match in weight and corner shape, and fills that suit the font category. Wild mode picks at random.
 - Icon filters: style (outline, filled, duotone, color), stroke weight, traits, design grid, license, icon set category, set size and individual icon sets.
 - Font filters: source, category, weights, width, style, mood, visual style, classification, license, script, quality, name and excluded families.
 - Every filter option shows how many results it would leave. Options that would leave none are disabled. When a new word leaves nothing, the page offers the filters to remove.
@@ -50,10 +49,10 @@ The thresholds sit at the top of the "reading shapes" section of that file.
 index.html                     Vite entry
 src/main.js                    Loads Web Awesome, styles and the app
 src/App.svelte                 Header, three-column layout, footer
-src/components/                Create panel, preview, match panel, settings and small controls
+src/components/                Create panel, preview, spin panel, settings and small controls
 src/lib/iconify.js             Iconify search, shape loading and trait reading
 src/lib/filters.js             Filter definitions, counts per option and the way out of empty results
-src/lib/harmony.js             Match scoring and picking
+src/lib/pick.js                Random picking that respects locks
 src/lib/fonts.js               Font catalog, labels and loaders
 src/lib/render.js              Lockup markup, icon alignment, links and the code snippet
 src/lib/store.svelte.js        App state and actions

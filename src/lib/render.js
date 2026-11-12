@@ -1,7 +1,6 @@
 // Markup for lockups (icon plus text in the picked font), icon alignment, links and the code snippet.
 import { iconSVG, licGroup, NAV } from "./iconify.js";
 import { fontsourceUrl, nearestWeight } from "./fonts.js";
-import { wLevel } from "./harmony.js";
 import { esc } from "./util.js";
 import { ui } from "./ui-icons.js";
 
@@ -22,7 +21,8 @@ export function iconFor(p, concept) {
   return n ? iconSVG(p.style.prefix, n) : null;
 }
 
-// stroke icons can follow the font weight
+// stroke icons can follow the font weight: a font weight on the same 1 (thin) to 5 (heavy) scale as icon weights
+const wLevel = (w) => (w <= 100 ? 1 : w <= 200 ? 1.5 : w <= 300 ? 2 : w <= 400 ? 3 : w <= 500 ? 3.5 : w <= 600 ? 4 : w <= 700 ? 4.5 : 5);
 export function strokeFor(s, w, on) {
   if (!on || !s.stroke) return null;
   return +(s.stroke * Math.max(.45, Math.min(1.9, wLevel(w) / s.weight))).toFixed(2);

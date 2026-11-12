@@ -4,7 +4,7 @@ import { FONTS, FONT_BY_NAME, FONT_BY_LOWER, nearestWeight, loadFont } from "./f
 import { STYLES, WORD, SETS, searchWord, searchSeq, onWordChange, loadIconItems, loadNav, setFromInfo } from "./iconify.js";
 import { IF, FF, ICON_GROUPS, FONT_GROUPS, facetBase, computeFacets, wayOut, ICON_CLEAR, FONT_CLEAR, resetFilters,
   resolveIconFill, resolveMonoline, resolveFontWeight, resolveFontVariable } from "./filters.js";
-import { choose, score, sameSet, weightedPick } from "./harmony.js";
+import { choose, sameSet } from "./pick.js";
 import { subWeight } from "./render.js";
 import { rnd, sleep, reducedMotion } from "./util.js";
 
@@ -15,7 +15,6 @@ const KEYS = { saved: "pairing-saved-spins", excluded: "pairing-excluded-familie
 class App {
   q = $state("download");
   text = $state("Download all");
-  mode = $state("harmony");
   locks = $state([false, false, false]);
   cur = $state.raw(null);       // the current pairing
   frame = $state.raw(null);     // what the preview shows while the spin shuffles
@@ -127,16 +126,16 @@ export const excluded = {
 };
 
 // ---------- word ----------
-// a new word keeps the current icon set when it has the word, otherwise takes the best fit for the current font
+// a new word keeps the current icon set when it has the word, otherwise takes a random icon for it
 export async function setWord(v) {
   app.q = v;
   const { done, seq } = searchWord(v);
   await done;
   if (seq !== searchSeq || !app.cur || app.spinning) return;
-  const pool = app.view.poolStyles, { font, weight } = app.cur;
-  const m = sameSet(app.cur.style, pool) || (pool.length ? weightedPick(pool, (s) => score(s, font, weight).total, 8) : null);
+  const pool = app.view.poolStyles;
+  const m = sameSet(app.cur.style, pool) || (pool.length ? rnd(pool) : null);
   if (!m) return;
-  const p = { ...app.cur, style: m, icon: m.name, how: m.how, score: score(m, font, weight) };
+  const p = { ...app.cur, style: m, icon: m.name, how: m.how };
   await ensureLoaded(p);
   if (seq === searchSeq) app.cur = p;
 }
@@ -152,7 +151,7 @@ export async function spin() {
   const { poolStyles, poolFonts } = app.view;
   if (app.spinning || !poolStyles.length || !poolFonts.length) return;
   app.spinning = true; app.status = "Spinning";
-  const pick = choose({ locks: app.locks, cur: app.cur, mode: app.mode }, poolStyles, poolFonts);
+  const pick = choose({ locks: app.locks, cur: app.cur }, poolStyles, poolFonts);
   const ready = ensureLoaded(pick);
   const t0 = performance.now(), minT = reducedMotion() ? 0 : 950, cur = app.cur;
   if (minT && cur) {
@@ -160,7 +159,7 @@ export async function spin() {
     while (performance.now() - t0 < minT) {
       const s = app.locks[0] ? cur.style : rnd(poolStyles);
       const fp = app.locks[1] ? [cur.font, cur.weight, cur.italic] : rnd(loadedPairs.length ? loadedPairs : [[cur.font, cur.weight, cur.italic]]);
-      app.frame = { style: s, icon: s.name, font: fp[0], weight: app.locks[2] ? cur.weight : fp[1], italic: fp[2], pct: Math.round(40 + Math.random() * 59) };
+      app.frame = { style: s, icon: s.name, font: fp[0], weight: app.locks[2] ? cur.weight : fp[1], italic: fp[2] };
       await sleep(70 + i++ * 6);
     }
   }
@@ -172,7 +171,7 @@ export async function restore(p) {
   if (app.spinning) return;
   if (p.text != null && p.text !== app.text) app.text = p.text;
   await ensureLoaded(p);
-  app.cur = { ...p, score: score(p.style, p.font, p.weight) };
+  app.cur = p;
 }
 
 // ---------- saved (this browser only) ----------
@@ -187,7 +186,7 @@ export function fromRecord(x) {
   const lib = SETS.get(x.p) || { ...setFromInfo(x.p), ...x.set };
   const style = { ...x.st, traits: new Set(x.st.traits), id: `${x.p}:${x.i}`, prefix: x.p, name: x.i, lib, how: x.h || "exact", count: lib.total };
   const font = FONT_BY_NAME.get(x.f);
-  return { style, icon: x.i, how: style.how, font, weight: x.w, italic: x.it, score: score(style, font, x.w), text: x.t, at: x.at };
+  return { style, icon: x.i, how: style.how, font, weight: x.w, italic: x.it, text: x.t, at: x.at };
 }
 export const saves = {
   isSaved(p, text) { return !!p && app.saved.some((x) => saveKey(x) === saveKey(toRecord(p, text))); },
@@ -219,7 +218,7 @@ export async function start() {
   recompute(); // shapes stream in with throttled redraws, so take a fresh view before the first pick
   const { poolStyles, poolFonts } = app.view;
   if (!poolStyles.length || !poolFonts.length) return;
-  const pick = choose({ locks: app.locks, cur: null, mode: app.mode }, poolStyles, poolFonts);
+  const pick = choose({ locks: app.locks, cur: null }, poolStyles, poolFonts);
   await ensureLoaded(pick);
   app.cur = pick;
   // warm a few fonts so the spin shuffle has variety

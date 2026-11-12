@@ -2,7 +2,6 @@
   import { app, spin, setLock, filters, excluded, saves, restore, fromRecord, toast } from "../lib/store.svelte.js";
   import { licGroup } from "../lib/iconify.js";
   import { WEIGHT_NAMES, fontPage } from "../lib/fonts.js";
-  import { reasons, verdictOf } from "../lib/harmony.js";
   import { iconPage } from "../lib/render.js";
   import { FILL_NAME, WEIGHT_WORD } from "../lib/util.js";
   import { ui } from "../lib/ui-icons.js";
@@ -11,13 +10,6 @@
   const v = $derived(app.view);
   const cur = $derived(app.cur);
   const ok = $derived(!!v && v.poolStyles.length > 0 && v.poolFonts.length > 0);
-  const verdict = $derived(cur ? verdictOf(cur.score.total) : null);
-  const why = $derived.by(() => {
-    if (!cur) return "Spin to get a pairing and a short explanation.";
-    const rs = reasons(cur.style, cur.font, cur.weight, cur.score);
-    const pos = rs.filter(([g]) => g).map(([, t]) => t), neg = rs.filter(([g]) => !g).map(([, t]) => t);
-    return (pos.join(" ") + (neg.length ? (pos.length ? " Watch out: " : "") + neg.join(" ") : "")).trim();
-  });
   const ip = $derived(cur ? iconPage(cur, app.q) : null);
   const fp = $derived(cur ? fontPage(cur.font) : null);
   const credit = $derived(cur && ["by", "sa", "nc"].includes(licGroup(cur.style.lib.license)));
@@ -27,7 +19,7 @@
   const savedItems = $derived(app.saved.map(fromRecord));
 
   $effect(() => {
-    if (cur && verdict) app.status = `${verdict[0]}, ${cur.score.total} percent. ${cur.style.lib.name} ${cur.style.label} with ${cur.font.f} ${cur.weight}.`;
+    if (cur) app.status = `${cur.style.lib.name} ${cur.style.label} with ${cur.font.f} ${cur.weight}.`;
   });
   // fetch the shapes and fonts of saved pairings the first time the tab opens
   let warmed = false;
@@ -39,15 +31,8 @@
   }
 </script>
 
-<section class="panel rightcol" aria-label="Match details">
-  <p class="eyebrow">Match details</p>
-  <div class="scoreline">
-    <div class="pct" id="pct">{app.frame ? app.frame.pct + "%" : cur ? cur.score.total + "%" : "–"}</div>
-    {#if verdict}
-      <wa-badge pill appearance="filled-outlined" variant={verdict[1] ? "brand" : "danger"} class="verdict">{@html ui(verdict[1] ? "check" : "info")}{verdict[0]}</wa-badge>
-    {/if}
-  </div>
-  <p class="scorelbl">Match score</p>
+<section class="panel rightcol" aria-label="Pairing details">
+  <p class="eyebrow">Spin</p>
   <wa-button class="spin" variant="danger" size="l" id="spin" disabled={!ok} loading={app.spinning} onclick={spin}>
     <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Spin again
   </wa-button>
@@ -59,13 +44,9 @@
       </wa-button>
     {/each}
   </div>
-  <wa-radio-group class="modes" label="Spin mode" orientation="horizontal" size="s" value={app.mode} onchange={(e) => (app.mode = e.target.value)}>
-    <wa-radio appearance="button" value="harmony">Harmony</wa-radio>
-    <wa-radio appearance="button" value="wild">Wild</wa-radio>
-  </wa-radio-group>
   <div class="modehelp" class:bad={!ok && v && !(v.block.waiting && v.poolFonts.length)} id="modehelp">
     {#if ok}
-      {app.mode === "harmony" ? "Harmony favors pairs that match in weight and corner shape." : "Wild picks at random from everything your filters allow."} Press Space to spin.
+      Spin draws an icon, a typeface and a weight at random from your filters. Press Space to spin.
     {:else if v}
       {#each v.block.lines as line}<span>{line}</span>{/each}
       {#each v.block.fixes as x (x.kind + x.g)}
@@ -75,8 +56,6 @@
       {/each}
     {/if}
   </div>
-  <wa-divider></wa-divider>
-  <div class="why"><h2>Why it works</h2><p id="why">{why}</p></div>
   <wa-divider></wa-divider>
   {#if cur}
     {@const L = cur.style.lib}
