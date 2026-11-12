@@ -215,16 +215,41 @@ function bySet(icons) {
   for (const id of icons || []) { const i = id.indexOf(":"), k = id.slice(0, i); if (!m.has(k)) m.set(k, []); m.get(k).push(id.slice(i + 1)); }
   return m;
 }
-const searchPath = (q, start = 0) => `/search?query=${encodeURIComponent(q.replace(/-/g, " "))}&limit=999${start ? `&start=${start}` : ""}`;
-// the API returns at most 999 names per request; common words fill that, so read up to three pages
-async function searchAll(q) {
-  let res = await apiGet(searchPath(q));
-  for (let page = 1; res && page < 3 && res.icons?.length >= 999 * page; page++) {
-    const more = await apiGet(searchPath(q, 999 * page));
-    if (!more?.icons?.length) break;
-    res = { ...res, icons: res.icons.concat(more.icons), collections: { ...res.collections, ...more.collections } };
+// The public API returns at most 128 names per search and has no paging, so a common word like "download"
+// would reach only part of the sets. Searching in batches of sets (the prefixes parameter) reaches all of them:
+// a batch that hits the cap is split in two and searched again.
+const searchPath = (q, prefixes) => `/search?query=${encodeURIComponent(q.replace(/-/g, " "))}&limit=999${prefixes ? `&prefixes=${prefixes.map(encodeURIComponent).join(",")}` : ""}`;
+const COL_KEY = "pairing-iconify-collections", COL_TTL = 24 * 3600e3, BATCH = 20;
+let colsWait = null;
+// every public set, from /collections; kept in this browser for a day
+function loadCollections() {
+  return (colsWait ||= (async () => {
+    try { const c = JSON.parse(localStorage.getItem(COL_KEY) || "null"); if (c && Date.now() - c.at < COL_TTL) { addSets(c.sets); return Object.keys(c.sets); } } catch {}
+    const sets = await apiGet("/collections");
+    if (!sets) { colsWait = null; return null; }
+    addSets(sets);
+    try { localStorage.setItem(COL_KEY, JSON.stringify({ at: Date.now(), sets })); } catch {}
+    return Object.keys(sets);
+  })());
+}
+async function searchBatch(q, prefixes) {
+  const res = await apiGet(searchPath(q, prefixes));
+  if (!res) return null;
+  if (prefixes.length > 1 && res.icons?.length >= (res.limit || 128)) {
+    const mid = Math.ceil(prefixes.length / 2);
+    const [a, b] = await Promise.all([searchBatch(q, prefixes.slice(0, mid)), searchBatch(q, prefixes.slice(mid))]);
+    return { icons: [...(a?.icons || []), ...(b?.icons || [])], collections: { ...a?.collections, ...b?.collections } };
   }
   return res;
+}
+async function searchAll(q) {
+  const prefixes = await loadCollections();
+  if (!prefixes) return apiGet(searchPath(q)); // no set list: one plain search
+  const batches = [];
+  for (let i = 0; i < prefixes.length; i += BATCH) batches.push(prefixes.slice(i, i + BATCH));
+  const parts = await Promise.all(batches.map((b) => searchBatch(q, b)));
+  if (parts.every((x) => !x)) return null;
+  return { icons: parts.flatMap((x) => x?.icons || []), collections: Object.assign({}, ...parts.map((x) => x?.collections || {})) };
 }
 const singular = (q) => q.replace(/(ies)$/, "y").replace(/(?<!s)s$/, "");
 // the page registers how to redraw: changed() right away, changedSoon() at most every 200 ms while shapes stream in
@@ -255,7 +280,7 @@ export function searchWord(raw) {
     // few matches: also look up related words, such as trophy for winner
     if (plan.size < 12) {
       const rel = candidates(raw).filter((c) => !own.includes(c)).slice(0, 4);
-      const more = await Promise.all(rel.map((c) => apiGet(searchPath(c))));
+      const more = await Promise.all(rel.map((c) => searchAll(c)));
       if (!live()) return;
       more.forEach((r, i) => {
         if (!r) return;
