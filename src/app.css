@@ -41,7 +41,9 @@ svg{display:block}
 .help.bad{color:var(--wa-color-danger-on-quiet)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .weightpick{margin:0 0 22px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+/* label and control side by side, so each select gets the full width and its list fits its options */
+.propgrid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;align-items:center}
+.plabel{font-size:var(--wa-font-size-s);color:var(--wa-color-text-quiet)}
 wa-option .n{margin-inline-start:12px}
 .radio-l{display:grid}
 .radio-l b{font-weight:500}

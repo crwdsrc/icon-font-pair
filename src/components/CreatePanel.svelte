@@ -77,10 +77,13 @@
     </div>
     <div class="field">
       <span class="flabel">Font properties</span>
-      <div class="grid3">
-        <Picker locked={fontLocked} label="Widths" options={f.fwidth} value={v.ff.width} onPick={(x) => filters.setFont("width", x)} />
-        <Picker locked={fontLocked} label="Styles" options={f.fstyle} value={v.ff.style} onPick={(x) => filters.setFont("style", x)} />
-        <Picker locked={fontLocked} label="Moods" options={f.fmood} value={v.ff.mood} onPick={(x) => filters.setFont("mood", x)} />
+      <div class="propgrid">
+        <span class="plabel">Width</span>
+        <Picker locked={fontLocked} label="Width" options={f.fwidth} value={v.ff.width} onPick={(x) => filters.setFont("width", x)} />
+        <span class="plabel">Style</span>
+        <Picker locked={fontLocked} label="Style" options={f.fstyle} value={v.ff.style} onPick={(x) => filters.setFont("style", x)} />
+        <span class="plabel">Mood</span>
+        <Picker locked={fontLocked} label="Mood" options={f.fmood} value={v.ff.mood} onPick={(x) => filters.setFont("mood", x)} />
       </div>
     </div>
     <div class="field">
