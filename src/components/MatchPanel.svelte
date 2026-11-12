@@ -39,7 +39,8 @@
   <div class="keep" role="group" aria-label="Keep when spinning">
     <span>Keep</span>
     {#each LOCKS as l, i}
-      <wa-button size="s" pill data-lock={i} variant={app.locks[i] ? "brand" : "neutral"} appearance={app.locks[i] ? "accent" : "outlined"} aria-pressed={app.locks[i]} onclick={() => setLock(i, !app.locks[i])}>
+      <wa-button size="s" pill data-lock={i} variant={app.locks[i] ? "brand" : "neutral"} appearance={app.locks[i] ? "accent" : "outlined"} aria-pressed={app.locks[i]}
+        disabled={i === 2 && !!v?.ff.weight} title={i === 2 && v?.ff.weight ? "A font weight is picked, so spins already use it" : ""} onclick={() => setLock(i, !app.locks[i])}>
         <span slot="start" class="ico">{@html ui(app.locks[i] ? "lock" : "lock-open")}</span>{l}
       </wa-button>
     {/each}

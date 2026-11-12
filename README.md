@@ -8,7 +8,8 @@ Type an icon name or meaning and a short text, then spin. The page picks an icon
 - Fill, line weight, corner shape and level of detail are read from each icon's SVG, so nothing is tagged by hand.
 - 2,053 fonts: the Google Fonts catalog plus 148 Fontsource families that are not on Google Fonts.
 - Icon filters: style (outline, filled, duotone, color), stroke weight, traits, design grid, license, icon set category, set size and individual icon sets.
-- Font filters: source, category, weights, width, style, mood, visual style, classification, license, script, quality, name and excluded families.
+- Font weight: pick a weight from Thin 100 to Black 900 and every spin uses it, with only fonts that have it in the pool. Any weight picks at random.
+- Font filters: source, category, width, style, mood, visual style, classification, license, script, quality, name and excluded families.
 - Every filter option shows how many results it would leave. Options that would leave none are disabled. When a new word leaves nothing, the page offers the filters to remove.
 - Saved pairings, recent spins and excluded families are kept in the browser's local storage.
 - Preview settings: light or dark, left-to-right or right-to-left, text size and stroke matching. These change the preview only.

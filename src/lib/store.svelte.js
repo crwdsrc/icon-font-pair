@@ -3,7 +3,7 @@
 import { FONTS, FONT_BY_NAME, FONT_BY_LOWER, nearestWeight, loadFont } from "./fonts.js";
 import { STYLES, WORD, SETS, searchWord, searchSeq, onWordChange, loadIconItems, loadNav, setFromInfo } from "./iconify.js";
 import { IF, FF, ICON_GROUPS, FONT_GROUPS, facetBase, computeFacets, wayOut, ICON_CLEAR, FONT_CLEAR, resetFilters,
-  resolveIconFill, resolveMonoline, resolveFontWeight, resolveFontVariable } from "./filters.js";
+  resolveIconFill, resolveMonoline, hasWeight } from "./filters.js";
 import { choose, sameSet } from "./pick.js";
 import { subWeight } from "./render.js";
 import { rnd, sleep, reducedMotion } from "./util.js";
@@ -96,7 +96,15 @@ export const filters = {
   setFont(k, v) {
     if (fontLocked()) return;
     FF[k] = v;
-    after(k === "weight" ? resolveFontWeight() : k === "width" || k === "style" ? resolveFontVariable() : null);
+    recompute();
+  },
+  // picking a weight also filters fonts to ones that have it, and switches the current pairing to it when its font does
+  setWeight(v) {
+    FF.weight = v; recompute(); // also allowed while the typeface is kept: it then picks among that font's weights
+    const cur = app.cur;
+    if (!v || !cur || !hasWeight(cur.font, +v) || cur.weight === +v) return;
+    const p = { ...cur, weight: +v, italic: false };
+    loadFont(p.font, p.weight, false, app.text).then(() => { if (app.cur === cur) app.cur = p; });
   },
   setLib(prefix, on) { if (iconLocked()) return; on ? IF.libsOff.delete(prefix) : IF.libsOff.add(prefix); recompute(); },
   allLibs(on) { if (iconLocked()) return; if (on) IF.libsOff.clear(); else STYLES.forEach((s) => IF.libsOff.add(s.prefix)); recompute(); },
@@ -158,7 +166,7 @@ export async function spin() {
   const { poolStyles, poolFonts } = app.view;
   if (app.spinning || !canSpin()) return;
   app.spinning = true; app.status = "Spinning";
-  const pick = choose({ locks: app.locks, cur: app.cur }, poolStyles, poolFonts);
+  const pick = choose({ locks: app.locks, cur: app.cur, weight: FF.weight }, poolStyles, poolFonts);
   const ready = ensureLoaded(pick);
   const t0 = performance.now(), minT = reducedMotion() ? 0 : 950, cur = app.cur;
   if (minT && cur) {
@@ -225,7 +233,7 @@ export async function start() {
   recompute(); // shapes stream in with throttled redraws, so take a fresh view before the first pick
   const { poolStyles, poolFonts } = app.view;
   if (!poolStyles.length || !poolFonts.length) return;
-  const pick = choose({ locks: app.locks, cur: null }, poolStyles, poolFonts);
+  const pick = choose({ locks: app.locks, cur: null, weight: FF.weight }, poolStyles, poolFonts);
   await ensureLoaded(pick);
   app.cur = pick;
   // warm a few fonts so the spin shuffle has variety

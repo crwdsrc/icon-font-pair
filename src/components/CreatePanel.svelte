@@ -3,6 +3,7 @@
   import { iconSVG } from "../lib/iconify.js";
   import { FONTS } from "../lib/fonts.js";
   import { setMono } from "../lib/render.js";
+  import { hasWeight } from "../lib/filters.js";
   import { ui } from "../lib/ui-icons.js";
   import Toggles from "./Toggles.svelte";
   import Checks from "./Checks.svelte";
@@ -11,6 +12,8 @@
   const v = $derived(app.view);
   const fontLocked = $derived(app.locks[1] && !!app.cur);
   const iconLocked = $derived(app.locks[0] && !!app.cur);
+  // with a kept typeface, the weight choices are that font's weights
+  const weightOptions = $derived(!v ? [] : fontLocked ? f.fweight.map((o) => ({ ...o, n: null, zero: !!o.v && !hasWeight(app.cur.font, +o.v) })) : f.fweight);
   const f = $derived(v?.facets);
   const TILE_SVG = {
     outline: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 25C7 14 14 7 25 7c0 11-7 18-18 18Z"/><path d="M7 25 18 14"/></svg>`,
@@ -51,6 +54,12 @@
       <wa-callout variant="neutral" size="s" class="lockednote"><span slot="icon" class="ico">{@html ui("lock")}</span>You're keeping the typeface, so font filters are off.
         <wa-button size="xs" appearance="outlined" onclick={() => setLock(1, false)}>Unlock typeface</wa-button></wa-callout>
     {/if}
+    <!-- the weight is a pick, not a filter: spins use it, and it stays available for a kept typeface -->
+    <div class="field weightpick">
+      <span class="flabel" id="fweightLbl">Font weight</span>
+      <Picker label="Font weight" options={weightOptions} value={v.ff.weight} onPick={(x) => filters.setWeight(x)} />
+      <p class="help">{v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font."}</p>
+    </div>
     <!-- a kept typeface ignores the font filters, so they are switched off until it is unlocked -->
     <fieldset class="lockable" disabled={fontLocked}>
     <wa-radio-group disabled={fontLocked} label="Font source" value={v.ff.src} onchange={(e) => filters.setFont("src", e.target.value)}>
@@ -63,13 +72,12 @@
     <div class="eyebrow-row"><p class="eyebrow">Font filters</p><span class="count" id="fcount">{v.fcount}</span></div>
     <div class="field">
       <wa-select disabled={fontLocked} id="fcat" label="Font category" placeholder="Any category" multiple with-clear value={v.ff.cat} onchange={(e) => filters.setFontCats(e.target.value || [])}>
-        {#each f.fcat as o (o.v)}<wa-option value={o.v} disabled={o.zero}>{o.label}{#if !o.sel} ({o.n.toLocaleString()}){/if}</wa-option>{/each}
+        {#each f.fcat as o (o.v)}<wa-option value={o.v} disabled={o.zero}>{o.label}{#if !o.sel}<span slot="end" class="n">{o.n.toLocaleString()}</span>{/if}</wa-option>{/each}
       </wa-select>
     </div>
     <div class="field">
       <span class="flabel">Font properties</span>
-      <div class="grid2">
-        <Picker locked={fontLocked} label="Weights" options={f.fweight} value={v.ff.weight} onPick={(x) => filters.setFont("weight", x)} />
+      <div class="grid3">
         <Picker locked={fontLocked} label="Widths" options={f.fwidth} value={v.ff.width} onPick={(x) => filters.setFont("width", x)} />
         <Picker locked={fontLocked} label="Styles" options={f.fstyle} value={v.ff.style} onPick={(x) => filters.setFont("style", x)} />
         <Picker locked={fontLocked} label="Moods" options={f.fmood} value={v.ff.mood} onPick={(x) => filters.setFont("mood", x)} />

@@ -40,6 +40,9 @@ svg{display:block}
 .help{font-size:var(--wa-font-size-s);color:var(--wa-color-text-quiet);line-height:1.5;margin:8px 0 0}
 .help.bad{color:var(--wa-color-danger-on-quiet)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.weightpick{margin:0 0 22px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+wa-option .n{margin-inline-start:12px}
 .radio-l{display:grid}
 .radio-l b{font-weight:500}
 .radio-l small{color:var(--wa-color-text-quiet);font-size:var(--wa-font-size-s)}

@@ -41,14 +41,15 @@ const subTest = (k, f) => (k === "none" ? !f.s : (SUB_GROUP[k] || [k]).includes(
 export const FLIC = [["SIL Open Font License", "SIL OFL"], ["Apache 2.0", "Apache 2.0"], ["Ubuntu Font License", "Ubuntu"], ["pd", "Public domain or MIT"]];
 const licKey = (f) => (/public domain|^MIT$/i.test(f.l) ? "pd" : f.l);
 export const FCAT = [["sans", "Sans-serif"], ["serif", "Serif"], ["display", "Display"], ["handwriting", "Handwriting"], ["mono", "Monospace"]];
-export const FWEIGHT = [["", "All weights"], ["300", "Has 300 Light"], ["400", "Has 400 Regular"], ["500", "Has 500 Medium"], ["600", "Has 600 SemiBold"], ["700", "Has 700 Bold"], ["800", "Has 800 ExtraBold"], ["900", "Has 900 Black"], ["many", "6+ weights"], ["one", "Single weight"]];
+export const FWEIGHT = [["", "Any weight"], ["100", "Thin 100"], ["200", "ExtraLight 200"], ["300", "Light 300"], ["400", "Regular 400"], ["500", "Medium 500"], ["600", "SemiBold 600"], ["700", "Bold 700"], ["800", "ExtraBold 800"], ["900", "Black 900"]];
 export const FWIDTH = [["", "All widths"], ["normal", "Normal width"], ["condensed", "Condensed"], ["expanded", "Expanded"], ["variable", "Variable width"]];
 export const FSTYLE = [["", "All styles"], ["italic", "Has italics"], ["variable", "Variable font"], ["static", "Static font"], ["popular", "Popular picks"]];
 export const FMOOD = [["", "All moods"], ...["Business", "Calm", "Competent", "Playful", "Happy", "Cute", "Futuristic", "Sophisticated", "Vintage", "Loud", "Artistic", "Rugged"].map((m) => [m, m])];
 export const FSCRIPT = [["", "Any script"], ...Object.entries(SCRIPT_GROUPS).filter(([k]) => k !== "latin")];
 export const FSRC = [["all", "All sources", "Google Fonts and Fontsource"], ["google", "Google Fonts", "Free, open source fonts"], ["fs", "Fontsource", "Self-hosted, open source fonts"]];
-const hasWeight = (f, n) => (f.v ? n >= f.v[0] && n <= f.v[1] : f.w.includes(n));
-const weightOk = (v, f) => (!v ? true : v === "many" ? !!f.v || f.w.length >= 6 : v === "one" ? !f.v && f.w.length === 1 : hasWeight(f, +v));
+export const hasWeight = (f, n) => (f.v ? n >= f.v[0] && n <= f.v[1] : f.w.includes(n));
+// a picked weight keeps only fonts that have it; spins then use that weight
+const weightOk = (v, f) => !v || hasWeight(f, +v);
 const styleOptOk = (v, f) => (!v ? true : v === "italic" ? !!f.i : v === "variable" ? !!f.v : v === "static" ? !f.v : v === "popular" ? !!f.p : true);
 
 // ---------- state ----------
@@ -107,13 +108,6 @@ const chain = (...fns) => () => { const undos = fns.map((f) => f()); return () =
 const NONOUTLINE = ["filled", "duotone", "multicolor"];
 const dropMonoline = () => { const had = IF.vis.has("monoline"); IF.vis.delete("monoline"); return () => { if (had) IF.vis.add("monoline"); }; };
 const keepOutlineOnly = () => { const old = [...IF.fill]; old.forEach((x) => NONOUTLINE.includes(x) && IF.fill.delete(x)); return () => { IF.fill.clear(); old.forEach((x) => IF.fill.add(x)); }; };
-function fontWeightConflictFix(v) {
-  const fixes = [];
-  if (v === "one" && FF.style === "variable") fixes.push(setVal(FF, "style", ""));
-  if (v === "one" && FF.width === "variable") fixes.push(setVal(FF, "width", ""));
-  return fixes;
-}
-const fontVariableConflictFix = (v) => (v === "variable" && FF.weight === "one" ? [setVal(FF, "weight", "")] : []);
 // each returns a note for the toast when it changed something
 export function resolveIconFill() {
   if ([...IF.fill].some((x) => NONOUTLINE.includes(x)) && IF.vis.has("monoline")) { IF.vis.delete("monoline"); return "Turned off Monoline. Filled, duotone and color icons aren't drawn with a single line."; }
@@ -121,12 +115,6 @@ export function resolveIconFill() {
 export function resolveMonoline() {
   const drop = [...IF.fill].filter((x) => NONOUTLINE.includes(x));
   if (IF.vis.has("monoline") && drop.length) { drop.forEach((x) => IF.fill.delete(x)); return `Turned off ${drop.map((x) => FILL_NAME[x]).join(", ")}. Monoline icons are outline only.`; }
-}
-export function resolveFontWeight() {
-  if (FF.weight === "one" && (FF.style === "variable" || FF.width === "variable")) { if (FF.style === "variable") FF.style = ""; if (FF.width === "variable") FF.width = ""; return "Turned off the variable filter. Single-weight fonts aren't variable."; }
-}
-export function resolveFontVariable() {
-  if ((FF.style === "variable" || FF.width === "variable") && FF.weight === "one") { FF.weight = ""; return "Turned off Single weight. Variable fonts cover a weight range."; }
 }
 
 // ---------- counts on every option ----------
@@ -147,9 +135,9 @@ export function computeFacets(STYLES, IB, FB) {
     isize: ISIZE.map(([v, l]) => opt(v, l, ic(setVal(IF, "size", v), "size"), IF.size === v)),
     fsrc: FSRC.map(([v, l, d]) => ({ ...opt(v, l, fc(setVal(FF, "src", v), "src"), FF.src === v), desc: d })),
     fcat: FCAT.map(([v, l]) => opt(v, l, fc(addTo(FF.cat, v), "cat"), FF.cat.has(v))),
-    fweight: FWEIGHT.map(([v, l]) => { const fx = fontWeightConflictFix(v); return opt(v, l, fx.length ? tryCount(chain(setVal(FF, "weight", v), ...fx), FONTS, FONT_GROUPS) : fc(setVal(FF, "weight", v), "weight"), FF.weight === v); }),
-    fwidth: FWIDTH.map(([v, l]) => { const fx = fontVariableConflictFix(v); return opt(v, l, fx.length ? tryCount(chain(setVal(FF, "width", v), ...fx), FONTS, FONT_GROUPS) : fc(setVal(FF, "width", v), "width"), FF.width === v); }),
-    fstyle: FSTYLE.map(([v, l]) => { const fx = fontVariableConflictFix(v); return opt(v, l, fx.length ? tryCount(chain(setVal(FF, "style", v), ...fx), FONTS, FONT_GROUPS) : fc(setVal(FF, "style", v), "style"), FF.style === v); }),
+    fweight: FWEIGHT.map(([v, l]) => opt(v, l, fc(setVal(FF, "weight", v), "weight"), FF.weight === v)),
+    fwidth: FWIDTH.map(([v, l]) => opt(v, l, fc(setVal(FF, "width", v), "width"), FF.width === v)),
+    fstyle: FSTYLE.map(([v, l]) => opt(v, l, fc(setVal(FF, "style", v), "style"), FF.style === v)),
     fmood: FMOOD.map(([v, l]) => opt(v, l, fc(setVal(FF, "mood", v), "mood"), FF.mood === v)),
     fscript: FSCRIPT.map(([v, l]) => opt(v, l, fc(setVal(FF, "script", v), "script"), FF.script === v)),
     fvis: FVIS.map(([v, l]) => opt(v, l, fc(addTo(FF.vis, v), "vis"), FF.vis.has(v))),
@@ -174,7 +162,7 @@ const FONT_GROUP_LABEL = {
   excluded: () => `${FF.excluded.size} excluded families`,
   src: () => `Source: ${FF.src === "fs" ? "Fontsource" : "Google Fonts"}`,
   cat: () => `Category: ${pick(FCAT, FF.cat)}`,
-  weight: () => pick(FWEIGHT, [FF.weight]),
+  weight: () => `Weight: ${pick(FWEIGHT, [FF.weight])}`,
   width: () => pick(FWIDTH, [FF.width]),
   style: () => pick(FSTYLE, [FF.style]),
   mood: () => `Mood: ${FF.mood}`,

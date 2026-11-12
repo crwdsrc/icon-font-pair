@@ -7,6 +7,6 @@
 
 <wa-select size={size} disabled={locked} aria-label={label} value={enc(value)} onchange={(e) => onPick(e.target.value === "any" ? "" : e.target.value)}>
   {#each options as o (o.v)}
-    <wa-option value={enc(o.v)} disabled={o.zero || locked}>{o.label}{#if o.v !== "" && o.v !== 0 && !o.sel} ({o.n.toLocaleString()}){/if}</wa-option>
+    <wa-option value={enc(o.v)} disabled={o.zero || locked}>{o.label}{#if o.v !== "" && o.v !== 0 && !o.sel && o.n != null}<span slot="end" class="n">{o.n.toLocaleString()}</span>{/if}</wa-option>
   {/each}
 </wa-select>

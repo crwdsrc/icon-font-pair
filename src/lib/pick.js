@@ -1,5 +1,5 @@
 // Picking a pairing: a random icon set, icon, font and weight from what the filters allow.
-// Locked parts of the current pairing stay.
+// Locked parts of the current pairing stay. A picked weight is used whenever the font has it.
 import { fontWeights, nearestWeight, hasItalic } from "./fonts.js";
 import { rnd } from "./util.js";
 
@@ -13,12 +13,13 @@ export function sameSet(st, pool) {
   const c = pool.filter((s) => s.prefix === st.prefix);
   return c.find((s) => s.tpl === st.tpl) || c.find((s) => s.fill === st.fill) || c[0] || null;
 }
-export function choose({ locks: [li, lf, lw], cur }, poolStyles, poolFonts) {
+export function choose({ locks: [li, lf, lw], cur, weight: picked }, poolStyles, poolFonts) {
   const style = li && cur
     ? poolStyles.find((s) => s.id === cur.style.id) || sameSet(cur.style, poolStyles) || cur.style
     : randomStyle(poolStyles);
   const font = lf && cur ? cur.font : rnd(poolFonts);
-  const weight = lw && cur ? nearestWeight(font, cur.weight) : rnd(fontWeights(font));
-  const italic = hasItalic(font) && (lw && cur ? cur.italic : Math.random() < 0.2);
+  const keep = picked ? +picked : lw && cur ? cur.weight : 0;
+  const weight = keep ? nearestWeight(font, keep) : rnd(fontWeights(font));
+  const italic = hasItalic(font) && (!picked && lw && cur ? cur.italic : !picked && Math.random() < 0.2);
   return { style, icon: style.name, how: style.how, font, weight, italic };
 }
