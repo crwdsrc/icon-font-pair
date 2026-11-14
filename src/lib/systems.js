@@ -41,8 +41,8 @@ export const SYSTEMS = [
   },
   {
     id: "pajamas", icons: ["home", "search", "settings"], hero: "download", word: "download", name: "Pajamas", org: "GitLab", prefix: "pajamas", font: "Inter",
-    weights: [[400, "body"], [600, "buttons"]],
-    note: "GitLab Sans is Inter with character disambiguation turned on. GitLab says to use Inter where GitLab Sans isn't available. Buttons use SemiBold.",
+    weights: [[400, "body"], [600, "headings"]],
+    note: "GitLab Sans is Inter with character disambiguation turned on. GitLab says to use Inter where GitLab Sans isn't available. Body text uses 400 and headings use SemiBold 600.",
     sources: [["Pajamas type fundamentals", "https://design.gitlab.com/product-foundations/type-fundamentals"], ["GitLab brand typography", "https://design.gitlab.com/brand-design/typography"]],
   },
   {
@@ -60,7 +60,7 @@ export const SYSTEMS = [
   {
     id: "nuxt-ui", icons: ["house", "search", "settings"], hero: "download", word: "download", name: "Nuxt UI", org: "Nuxt", prefix: "lucide", font: "Public Sans",
     weights: [[400, "body"], [600, "section headings"]],
-    note: "Nuxt UI draws its own component icons from Lucide through Iconify, and its docs set Public Sans as the sans font.",
+    note: "Nuxt UI draws its own component icons from Lucide through Iconify. It falls back to the system font, but its docs and starter template set Public Sans.",
     sources: [["Nuxt UI fonts", "https://ui.nuxt.com/getting-started/fonts"], ["Nuxt UI icons", "https://ui.nuxt.com/getting-started/icons"]],
   },
   {
@@ -76,10 +76,10 @@ export const SYSTEMS = [
     sources: [["Clarity typography", "https://core.clarity.design/foundation/typography"], ["Clarity icons", "https://core.clarity.design/foundation/icons"]],
   },
   {
-    id: "uswds", icons: ["baseline-home", "baseline-search", "baseline-settings"], hero: "baseline-download", word: "download", name: "USWDS", org: "US government", prefix: "ic", font: "Public Sans",
+    id: "uswds", icons: ["baseline-home", "baseline-search", "baseline-settings"], hero: "baseline-download", word: "download", name: "USWDS", org: "US government", prefix: "ic", font: "Source Sans 3",
     weights: [[400, "body"]],
-    note: "Most USWDS icons are Google Material Icons, plus a few USWDS drew. USWDS also made Public Sans, based on Libre Franklin.",
-    sources: [["USWDS package", "https://github.com/uswds/uswds"], ["Public Sans", "https://github.com/uswds/public-sans"]],
+    note: "Most USWDS icons are Google Material Icons, plus a few USWDS drew. The default sans font is Source Sans Pro, now called Source Sans 3. USWDS also made Public Sans and ships it as an option.",
+    sources: [["USWDS font tokens", "https://designsystem.digital.gov/design-tokens/typesetting/font-family/"], ["USWDS package", "https://github.com/uswds/uswds"]],
   },
   {
     id: "kern", icons: ["home-outline", "search-outline", "settings-outline"], hero: "download-outline", word: "download", name: "KERN", org: "German government", prefix: "material-symbols", font: "Fira Sans",
@@ -96,7 +96,7 @@ export const SYSTEMS = [
   {
     id: "unity", icons: ["house", "magnifying-glass", "gear"], hero: "download", word: "download", name: "App UI", org: "Unity", prefix: "ph", font: "Inter",
     weights: [[400, "regular"], [600, "semibold"]],
-    note: "Unity's App UI ships Inter in Regular and SemiBold, and its docs show how to add Phosphor icons through a Unity package.",
+    note: "Unity's App UI ships Inter in Regular and SemiBold. Its icon variants match Phosphor's six weights, and its docs show how to add the full Phosphor set through a Unity package.",
     sources: [["App UI typography", "https://docs.unity3d.com/Packages/com.unity.dt.app-ui@2.0/manual/custom-typography.html"], ["App UI custom icons", "https://docs.unity3d.com/Packages/com.unity.dt.app-ui@1.0/manual/custom-icons.html"]],
   },
   {
