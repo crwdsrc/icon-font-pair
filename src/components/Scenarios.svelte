@@ -1,5 +1,5 @@
 <script>
-  import { app, openScenarioPair } from "../lib/store.svelte.js";
+  import { app, openPair } from "../lib/store.svelte.js";
   import { SCENARIOS } from "../lib/scenarios.js";
   import { loadIconItems, iconSVG, SETS } from "../lib/iconify.js";
   import { FONT_BY_NAME, loadFont, nearestWeight, WEIGHT_NAMES, fontPage } from "../lib/fonts.js";
@@ -84,7 +84,7 @@
               <p class="sg-meta">
                 {#if f}<a class="ext" href={fontPage(f).url} target="_blank" rel="noopener">{x.font} on {fontPage(f).site}{@html ui("external-link")}</a>, {/if}<a class="ext" href={`https://icon-sets.iconify.design/${x.prefix}/`} target="_blank" rel="noopener">{setName(x.prefix)} on Iconify{@html ui("external-link")}</a>
               </p>
-              <wa-button size="s" appearance="outlined" onclick={() => openScenarioPair(x, s.sample.headline)}>
+              <wa-button size="s" appearance="outlined" onclick={() => openPair(x, s.sample.headline)}>
                 <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Open in randomizer
               </wa-button>
             </div>

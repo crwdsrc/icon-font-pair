@@ -86,9 +86,9 @@ onWordChange(recompute);
 
 // ---------- filter actions ----------
 const toggle = (set, v) => (set.has(v) ? set.delete(v) : set.add(v));
-// in the randomizer, filters for a kept icon set or typeface are switched off; the other views ignore keeps
-export const iconLocked = () => app.mode === "random" && app.locks[0] && !!app.cur;
-export const fontLocked = () => app.mode === "random" && app.locks[1] && !!app.cur;
+// filters for a kept icon set or typeface are switched off
+export const iconLocked = () => app.locks[0] && !!app.cur;
+export const fontLocked = () => app.locks[1] && !!app.cur;
 const after = (note) => { if (note) toast(note); recompute(); };
 export const filters = {
   toggleIcon(group, v) {
@@ -238,23 +238,18 @@ export function setMode(m) {
   if (app.mode === m) return;
   app.mode = m;
   history.replaceState(null, "", HASH[m] || location.pathname + location.search);
-  recompute(); // locks only switch filters off in the randomizer
 }
 addEventListener("hashchange", () => setMode(modeFromHash()));
-// open a design system pairing in the randomizer
-export async function openPairing(p) {
-  await restore({ ...p, text: app.text });
-  app.history = [{ ...p, text: app.text }, ...app.history].slice(0, 10);
-  setMode("random");
-  scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
-}
-// open a scenario pairing: search its word, then use its icon from the results with its font
-export async function openScenarioPair(x, text) {
+// open a scenario or design system pairing: search its word, then use its icon from the results with its font
+export async function openPair(x, text) {
   setMode("random");
   scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
   app.text = text;
   await setWord(x.word);
-  const style = STYLES.find((s) => s.prefix === x.prefix && s.name === x.hero) || STYLES.find((s) => s.prefix === x.prefix);
+  // the exact icon, else the same icon in another size or style, else anything from the set
+  const base = x.hero.replace(/^(baseline|outline)-|-(\d+)(-solid|-filled)?$|-(outline|line|solid|fill|bold)$/g, "");
+  const inSet = STYLES.filter((s) => s.prefix === x.prefix);
+  const style = inSet.find((s) => s.name === x.hero) || inSet.find((s) => s.name.includes(base)) || inSet[0];
   const font = FONT_BY_NAME.get(x.font);
   if (!style || !font) { toast(`Couldn't find a “${x.word}” icon in that set. Try another word.`); return; }
   const p = { style, icon: style.name, how: style.how, font, weight: x.head, italic: false };

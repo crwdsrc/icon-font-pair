@@ -6,7 +6,7 @@ The page has three views, switched with the tabs at the top.
 
 - **Randomizer:** type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
 - **Scenarios:** strong pairings for dashboards, landing pages, mobile apps, docs, long-form reading, friendly consumer apps, public services and multilingual products. Each scenario says what matters there and shows two or three pairs in that kind of interface, with the reasons they work. Open any pair in the randomizer to get its code. The link `#scenarios` opens this view.
-- **Design systems:** icon sets and fonts that production design systems use together, such as Carbon with IBM Plex Sans or shadcn/ui with Lucide and Geist. Each card shows your word and text in that pair, what the system does with it, and links to the system's own docs. Pairs that fail a filter say which one, with a button to remove it. It uses the same word, text, weight and filters as the randomizer. Open any pair in the randomizer to get its code. The link `#design-systems` opens this view, and the older `#suggestions` still works.
+- **Design systems:** icon sets and fonts that 15 production design systems use together, such as Carbon with IBM Plex Sans, shadcn/ui with Lucide and Geist, or PatternFly 5 with Font Awesome and Red Hat Text. Each card draws the same sample with the system's own icons, fonts and weights, says what the system does with them, and links to its docs. Open any pair in the randomizer to get its code. The link `#design-systems` opens this view, and the older `#suggestions` still works.
 
 Features:
 
@@ -63,7 +63,6 @@ src/lib/filters.js             Filter definitions, counts per option and the way
 src/lib/pick.js                Random picking that respects locks
 src/lib/scenarios.js           Scenario pairings and the reasons they work
 src/lib/systems.js             Design system pairings, with sources
-src/lib/suggest.js             Checks those pairings against the word and filters
 src/lib/fonts.js               Font catalog, labels and loaders
 src/lib/render.js              Lockup markup, icon alignment, links and the code snippet
 src/lib/store.svelte.js        App state and actions
@@ -169,7 +168,7 @@ To run the image anywhere else, see [With Docker](#with-docker). Pass `--build-a
 - **Google Fonts:** bump `google-font-metadata`. To refresh the tags, download `https://raw.githubusercontent.com/google/fonts/main/tags/all/families.csv` to `vendor/google-fonts-tags.csv`.
 - **Fontsource:** run `node scripts/update-fontsource.cjs`, or pass new ids to add families. Hand-made classifications for families without Google tags live in `HAND` in `scripts/build-data.cjs`.
 - **Scenarios:** each scenario in `src/lib/scenarios.js` has its own sample text and two or three pairs. A pair names the Iconify prefix, one icon per sample row, a headline icon, a word the randomizer searches for, the font and the reasons. Icon names must exist in the set.
-- **Design systems:** each pairing in `src/lib/systems.js` names the Iconify prefix, the font family as it appears in the catalog, the weights the system documents and links to its docs. Add one only when both halves are free and the system's own docs confirm them.
+- **Design systems:** each pairing in `src/lib/systems.js` names the Iconify prefix, its home, search, settings and download icons in the system's default variant, a word the randomizer searches for, the font family as it appears in the catalog (plus a heading font if the system has one), the weights the system documents and links to its docs. Add one only when both halves are free and the system's own docs confirm them.
 - **Icons:** nothing to update. New sets and icons on Iconify show up on their own. Per-icon page links for Lucide, Tabler, Bootstrap Icons and Boxicons are in `iconPage()` in `src/lib/render.js`. Other sets open the icon's page on Iconify.
 
 ## Configuration

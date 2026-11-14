@@ -10,9 +10,8 @@
   import Picker from "./Picker.svelte";
 
   const v = $derived(app.view);
-  // keeps only matter in the randomizer
-  const fontLocked = $derived(app.mode === "random" && app.locks[1] && !!app.cur);
-  const iconLocked = $derived(app.mode === "random" && app.locks[0] && !!app.cur);
+  const fontLocked = $derived(app.locks[1] && !!app.cur);
+  const iconLocked = $derived(app.locks[0] && !!app.cur);
   // with a kept typeface, the weight choices are that font's weights
   const weightOptions = $derived(!v ? [] : fontLocked ? f.fweight.map((o) => ({ ...o, n: null, zero: !!o.v && !hasWeight(app.cur.font, +o.v) })) : f.fweight);
   const f = $derived(v?.facets);
@@ -64,9 +63,7 @@
     <div class="field weightpick">
       <span class="flabel" id="fweightLbl">Font weight</span>
       <Picker label="Font weight" options={weightOptions} value={v.ff.weight} onPick={(x) => filters.setWeight(x)} />
-      <p class="help">{app.mode === "systems"
-        ? (v.ff.weight ? "Design system pairs use this weight when the font has it." : "Design system pairs use the weight each system sets for body text.")
-        : (v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font.")}</p>
+      <p class="help">{v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font."}</p>
     </div>
     <!-- a kept typeface ignores the font filters, so they are switched off until it is unlocked -->
     <fieldset class="lockable" disabled={fontLocked}>

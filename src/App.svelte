@@ -62,7 +62,7 @@
           <li>Spin to draw an icon set from Iconify, a typeface and a weight. Keep any of the three to spin only the others.</li>
           <li>Save pairings you like. They stay in this browser.</li>
           <li>Scenarios shows strong pairings for dashboards, marketing, mobile, docs, reading and more, with the reasons they work.</li>
-          <li>Design systems lists icon sets and fonts that real design systems ship together, filtered the same way.</li>
+          <li>Design systems lists icon sets and fonts that real design systems ship together, with links to their docs.</li>
         </ul>
       </div>
     </wa-popover>
@@ -80,9 +80,9 @@
   </div>
 </div>
 
-<main class="layout" class:sgview={app.mode === "systems"} class:scview={app.mode === "scenarios"} id="main" role="tabpanel" aria-labelledby={`tab-${app.mode}`}>
-  {#if app.mode !== "scenarios"}<CreatePanel />{/if}
+<main class="layout" class:scview={app.mode !== "random"} id="main" role="tabpanel" aria-labelledby={`tab-${app.mode}`}>
   {#if app.mode === "random"}
+    <CreatePanel />
     <Preview />
     <MatchPanel />
   {:else if app.mode === "systems"}

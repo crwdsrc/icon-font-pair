@@ -1,81 +1,69 @@
 <script>
-  import { tick } from "svelte";
-  import { app, filters, openPairing } from "../lib/store.svelte.js";
-  import { suggestions } from "../lib/suggest.js";
-  import { LESSONS } from "../lib/systems.js";
-  import { loadFont, WEIGHT_NAMES } from "../lib/fonts.js";
-  import { lockup, fitLockups, applyStroke, setMono } from "../lib/render.js";
+  import { app, openPair } from "../lib/store.svelte.js";
+  import { SYSTEMS, LESSONS } from "../lib/systems.js";
+  import { loadIconItems, iconSVG, SETS } from "../lib/iconify.js";
+  import { FONT_BY_NAME, loadFont, nearestWeight, WEIGHT_NAMES } from "../lib/fonts.js";
+  import { fontCss } from "../lib/render.js";
   import { ui } from "../lib/ui-icons.js";
 
-  // app.view changes after every word search and filter change, so the rows follow both
-  const rows = $derived(app.view ? suggestions() : []);
-  const shown = $derived(rows.filter((r) => r.ok));
-  const hidden = $derived(rows.filter((r) => !r.ok));
-  const text = $derived(app.text.trim() || "Aa");
-  const dark = $derived(app.theme === "dark");
-  let root = $state();
+  // the same sample in every system: a headline with a download icon, then home, search and settings
+  const SAMPLE = { headline: "Download report", rows: ["Home", "Search", "Settings"] };
+  const TEXT = [SAMPLE.headline, ...SAMPLE.rows].join(" ");
 
-  // load each font at its weight, then size the icons and match strokes
+  let ready = $state(0);
+  const dark = $derived(app.theme === "dark");
+  const font = (name) => FONT_BY_NAME.get(name);
+  const css = (name, w) => { const f = font(name); return f ? fontCss(f, nearestWeight(f, w), false) : ""; };
+  const svg = (prefix, name) => (ready, iconSVG(prefix, name) || "");
+  const setName = (prefix) => (ready, SETS.get(prefix)?.name || prefix);
+  const body = (s) => s.weights[0][0], head = (s) => s.weights.at(-1)[0];
+
   $effect(() => {
-    void [rows, text, app.theme, app.dir, app.strokeMatch];
-    if (!root) return;
-    const draw = () => tick().then(() => {
-      fitLockups(root);
-      root.querySelectorAll("[data-sys]").forEach((el) => { const r = rows.find((x) => x.sys.id === el.dataset.sys); if (r?.p) applyStroke(el, r.p, app.strokeMatch); });
-    });
-    draw();
-    Promise.all(rows.filter((r) => r.p).map((r) => loadFont(r.p.font, r.p.weight, false, text))).then(draw);
+    loadIconItems(SYSTEMS.flatMap((s) => [...s.icons, s.hero].map((name) => ({ prefix: s.prefix, name })))).then(() => ready++);
+    for (const s of SYSTEMS) {
+      const f = font(s.font), hf = font(s.headFont || s.font);
+      Promise.all([f && loadFont(f, nearestWeight(f, body(s)), false, TEXT), hf && loadFont(hf, nearestWeight(hf, head(s)), false, TEXT)]).then(() => ready++);
+    }
   });
 
-  const weightsLine = (r) => r.sys.weights.map(([w, role]) => `${WEIGHT_NAMES[w]} ${w} for ${role}`).join(", ");
-  function fix(x) { if (x.kind === "lib") filters.setLib(x.g, true); else filters.clear(x.kind, x.g); }
+  const weightsLine = (s) => s.weights.map(([w, role]) => `${WEIGHT_NAMES[w]} ${w} for ${role}`).join(", ");
+  const open = (s) => openPair({ prefix: s.prefix, hero: s.hero, word: s.word, font: s.font, head: body(s) }, SAMPLE.headline);
 </script>
 
-{#snippet card(r)}
-  <article class="sg-card" class:off={!r.ok} data-sys={r.sys.id}>
-    <div class="sg-prev" class:wa-dark={dark} data-theme={app.theme} dir={app.dir}>
-      {#if r.p}{@html lockup(r.p, text)}{:else}<span class="sg-none">{@html setMono({ name: r.setName })}<span style="font-family:'{r.sys.font}',system-ui">{text}</span></span>{/if}
+<div class="scwrap">
+  <section class="panel sc-intro" aria-labelledby="ds-title">
+    <p class="eyebrow">Design systems</p>
+    <h2 class="sg-title" id="ds-title">Icon sets and fonts that ship together</h2>
+    <p class="help">Each pair comes from a design system in production use, checked against its own docs. Every card draws the same sample with the system's own icons, font and weights.</p>
+    <div class="sg-lessons">
+      {#each LESSONS as [h, text] (h)}<div><b>{h}</b><p>{text}</p></div>{/each}
     </div>
-    <div class="sg-body">
-      <h3>{r.sys.name}<small>{r.sys.org}</small></h3>
-      <p class="sg-pair">{r.setName} with {r.sys.font}{r.p ? ` ${WEIGHT_NAMES[r.p.weight]} ${r.p.weight}` : ""}</p>
-      <p class="sg-note">{r.sys.note}</p>
-      <p class="sg-meta">The system uses {weightsLine(r)}.</p>
-      <p class="sg-meta">Sources: {#each r.sys.sources as [label, url], i}<a class="ext" href={url} target="_blank" rel="noopener">{label}{@html ui("external-link")}</a>{i < r.sys.sources.length - 1 ? ", " : ""}{/each}</p>
-      {#if r.reasons.length}
-        <div class="sg-why">
-          {#each r.reasons as x (x.label)}
-            {#if x.kind}
-              <wa-button size="xs" appearance="outlined" onclick={() => fix(x)}>{x.g === "decor" ? "Show decorative" : `Remove ${x.label}`}</wa-button>
-            {:else}
-              <span class="help" class:bad={!x.pending}>{x.label}</span>
-            {/if}
-          {/each}
-        </div>
-      {/if}
-      <wa-button size="s" appearance={r.ok ? "accent" : "outlined"} variant={r.ok ? "brand" : "neutral"} disabled={!r.p} onclick={() => openPairing(r.p)}>
-        <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Open in randomizer
-      </wa-button>
-    </div>
-  </article>
-{/snippet}
+  </section>
 
-<section class="panel sg" aria-label="Design systems" bind:this={root}>
-  <div class="eyebrow-row"><p class="eyebrow">Design systems</p><span class="count">{shown.length} of {rows.length} fit your filters</span></div>
-  <h2 class="sg-title">Icon sets and fonts that ship together</h2>
-  <p class="help">Each pair comes from a design system in production use, checked against its own docs. Your word, text, weight and filters apply.</p>
-  <div class="sg-lessons">
-    {#each LESSONS as [h, body] (h)}<div><b>{h}</b><p>{body}</p></div>{/each}
-  </div>
-  <wa-divider></wa-divider>
-  {#if shown.length}
-    <div class="sg-grid">{#each shown as r (r.sys.id)}{@render card(r)}{/each}</div>
-  {:else}
-    <p class="empty">No design system pairing fits your word and filters. The pairings below say which filter or word to change.</p>
-  {/if}
-  {#if hidden.length}
-    <wa-details class="sg-hidden" summary={`${hidden.length} hidden by your word or filters`} open={!shown.length}>
-      <div class="sg-grid">{#each hidden as r (r.sys.id)}{@render card(r)}{/each}</div>
-    </wa-details>
-  {/if}
-</section>
+  <section class="panel" aria-label="Design system pairings">
+    <div class="sc-grid">
+      {#each SYSTEMS as s (s.id)}
+        <article class="sg-card sc-card">
+          <div class="sc-prev" class:wa-dark={dark} data-theme={app.theme} dir={app.dir}>
+            <div class="sc-demo" style={css(s.font, body(s))}>
+              <div class="sc-head" style={css(s.headFont || s.font, head(s))}><span class="sc-ic">{@html svg(s.prefix, s.hero)}</span><span>{SAMPLE.headline}</span></div>
+              <ul class="sc-rows">
+                {#each SAMPLE.rows as label, i (label)}<li><span class="sc-ic">{@html svg(s.prefix, s.icons[i])}</span><span>{label}</span></li>{/each}
+              </ul>
+            </div>
+          </div>
+          <div class="sg-body">
+            <h3>{s.name}<small>{s.org}</small></h3>
+            <p class="sg-pair">{setName(s.prefix)} with {s.font}{s.headFont ? ` and ${s.headFont}` : ""}</p>
+            <p class="sg-note">{s.note}</p>
+            <p class="sg-meta">The system uses {weightsLine(s)}.</p>
+            <p class="sg-meta">Sources: {#each s.sources as [label, url], i}<a class="ext" href={url} target="_blank" rel="noopener">{label}{@html ui("external-link")}</a>{i < s.sources.length - 1 ? ", " : ""}{/each}</p>
+            <wa-button size="s" appearance="outlined" onclick={() => open(s)}>
+              <span slot="start" class="ico">{@html ui("refresh-cw")}</span>Open in randomizer
+            </wa-button>
+          </div>
+        </article>
+      {/each}
+    </div>
+  </section>
+</div>
