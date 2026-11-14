@@ -82,6 +82,12 @@ export const SYSTEMS = [
     sources: [["USWDS package", "https://github.com/uswds/uswds"], ["Public Sans", "https://github.com/uswds/public-sans"]],
   },
   {
+    id: "kern", icons: ["home-outline", "search-outline", "settings-outline"], hero: "download-outline", word: "download", name: "KERN", org: "German government", prefix: "material-symbols", font: "Fira Sans",
+    weights: [[400, "body"], [600, "headings"]],
+    note: "KERN is the German federal and state UX standard. It sets everything in Fira Sans, with Regular 400 for body text and SemiBold 600 for most headings, and uses Google Material Symbols for icons.",
+    sources: [["KERN typography", "https://www.kern-ux.de/design-system/foundations/typografie"], ["KERN icons", "https://www.designsystem.gov.de/design-system/foundations/icons"]],
+  },
+  {
     id: "gravity", icons: ["house", "magnifier", "gear"], hero: "arrow-down-to-line", word: "house", name: "Gravity UI", org: "Yandex", prefix: "gravity-ui", font: "Inter",
     weights: [[400, "body"], [600, "headers"]],
     note: "Gravity UI sets Inter as its sans font and uses SemiBold 600 for headers. Yandex Cloud built it for consoles, admin panels and dashboards.",

@@ -6,7 +6,7 @@ The page has three views, switched with the tabs at the top.
 
 - **Randomizer:** type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
 - **Scenarios:** strong pairings for dashboards, landing pages, mobile apps, docs, long-form reading, friendly consumer apps, public services and multilingual products. Each scenario says what matters there and shows two or three pairs in that kind of interface, with the reasons they work. Open any pair in the randomizer to get its code. The link `#scenarios` opens this view.
-- **Design systems:** icon sets and fonts that 15 production design systems use together, such as Carbon with IBM Plex Sans, shadcn/ui with Lucide and Geist, or PatternFly 5 with Font Awesome and Red Hat Text. Each card draws the same sample with the system's own icons, fonts and weights, says what the system does with them, and links to its docs. Open any pair in the randomizer to get its code. The link `#design-systems` opens this view, and the older `#suggestions` still works.
+- **Design systems:** icon sets and fonts that 16 production design systems use together, such as Carbon with IBM Plex Sans, shadcn/ui with Lucide and Geist, or PatternFly 5 with Font Awesome and Red Hat Text. Each card draws the same sample with the system's own icons, fonts and weights, says what the system does with them, and links to its docs. Open any pair in the randomizer to get its code. The link `#design-systems` opens this view, and the older `#suggestions` still works.
 
 Features:
 
