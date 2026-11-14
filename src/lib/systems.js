@@ -8,6 +8,9 @@
 //   weights  [weight, what the system uses it for]; the first draws the rows, the last the headline
 //   headFont a separate heading font, when the system has one
 //   note     what the system does, in plain words
+// the day every entry below was last checked against its sources
+export const VERIFIED = "2026-11-14";
+
 export const SYSTEMS = [
   {
     id: "carbon", icons: ["home", "search", "settings"], hero: "download", word: "download", name: "Carbon", org: "IBM", prefix: "carbon", font: "IBM Plex Sans",
@@ -90,20 +93,8 @@ export const SYSTEMS = [
   {
     id: "gravity", icons: ["house", "magnifier", "gear"], hero: "arrow-down-to-line", word: "house", name: "Gravity UI", org: "Yandex", prefix: "gravity-ui", font: "Inter",
     weights: [[400, "body"], [600, "headers"]],
-    note: "Gravity UI sets Inter as its sans font and uses SemiBold 600 for headers. Yandex Cloud built it for consoles, admin panels and dashboards.",
-    sources: [["Gravity UI typography", "https://cdn.jsdelivr.net/npm/@gravity-ui/uikit@7.46.0/build/docs/guides/typography.md"], ["Gravity UI announcement", "https://medium.com/yandex/gravity-ui-easily-create-your-own-interface-32985f939f1c"]],
-  },
-  {
-    id: "unity", icons: ["house", "magnifying-glass", "gear"], hero: "download", word: "download", name: "App UI", org: "Unity", prefix: "ph", font: "Inter",
-    weights: [[400, "regular"], [600, "semibold"]],
-    note: "Unity's App UI ships Inter in Regular and SemiBold. Its icon variants match Phosphor's six weights, and its docs show how to add the full Phosphor set through a Unity package.",
-    sources: [["App UI typography", "https://docs.unity3d.com/Packages/com.unity.dt.app-ui@2.0/manual/custom-typography.html"], ["App UI custom icons", "https://docs.unity3d.com/Packages/com.unity.dt.app-ui@1.0/manual/custom-icons.html"]],
-  },
-  {
-    id: "patternfly", icons: ["home", "search", "cog"], hero: "download", word: "download", name: "PatternFly 5", org: "Red Hat", prefix: "fa-solid", font: "Red Hat Text", headFont: "Red Hat Display",
-    weights: [[400, "body"], [700, "headings"]],
-    note: "PatternFly 5 sets headings in Red Hat Display and body text in Red Hat Text, and ships Font Awesome 5 icons. PatternFly 6 moved to Red Hat's own icons, which aren't on Iconify.",
-    sources: [["PatternFly 5 setup", "https://v5-archive.patternfly.org/get-started/develop"], ["PatternFly 5 typography", "https://v5-archive.patternfly.org/design-foundations/typography"]],
+    note: "Gravity UI's fonts.css loads Inter in Regular 400 and SemiBold 600. Yandex Cloud built it for consoles, admin panels and dashboards.",
+    sources: [["Gravity UI fonts.css", "https://cdn.jsdelivr.net/npm/@gravity-ui/uikit@7.46.0/styles/fonts.css"], ["Gravity UI typography", "https://cdn.jsdelivr.net/npm/@gravity-ui/uikit@7.46.0/build/docs/guides/typography.md"]],
   },
 ];
 

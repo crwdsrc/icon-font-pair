@@ -1,6 +1,6 @@
 <script>
   import { app, openPair } from "../lib/store.svelte.js";
-  import { SYSTEMS, LESSONS } from "../lib/systems.js";
+  import { SYSTEMS, LESSONS, VERIFIED } from "../lib/systems.js";
   import { loadIconItems, iconSVG, SETS } from "../lib/iconify.js";
   import { FONT_BY_NAME, loadFont, nearestWeight, WEIGHT_NAMES } from "../lib/fonts.js";
   import { fontCss } from "../lib/render.js";
@@ -26,6 +26,7 @@
     }
   });
 
+  const verifiedLabel = new Date(VERIFIED + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   const weightsLine = (s) => s.weights.map(([w, role]) => `${WEIGHT_NAMES[w]} ${w} for ${role}`).join(", ");
   const open = (s) => openPair({ prefix: s.prefix, hero: s.hero, word: s.word, font: s.font, head: body(s) }, SAMPLE.headline);
 </script>
@@ -35,6 +36,7 @@
     <p class="eyebrow">Design systems</p>
     <h2 class="sg-title" id="ds-title">Icon sets and fonts that ship together</h2>
     <p class="help">Each pair comes from a design system in production use, checked against its own docs. Every card draws the same sample with the system's own icons, font and weights.</p>
+    <p class="sg-meta">Last verified <time datetime={VERIFIED}>{verifiedLabel}</time></p>
     <div class="sg-lessons">
       {#each LESSONS as [h, text] (h)}<div><b>{h}</b><p>{text}</p></div>{/each}
     </div>
