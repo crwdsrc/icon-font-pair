@@ -11,10 +11,12 @@ import { rnd, sleep, reducedMotion } from "./util.js";
 const load = (k, fallback) => { try { const v = localStorage.getItem(k); return v == null ? fallback : JSON.parse(v); } catch { return fallback; } };
 const store = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } };
 const KEYS = { saved: "pairing-saved-spins", excluded: "pairing-excluded-families", theme: "pairing-theme", dir: "pairing-direction", decor: "pairing-hide-decorative" };
-const modeFromHash = () => (location.hash === "#suggestions" ? "suggest" : "random");
+// views: random, scenarios, systems; #suggestions is the old name of #design-systems
+const HASH = { scenarios: "#scenarios", systems: "#design-systems" };
+const modeFromHash = () => (location.hash === "#scenarios" ? "scenarios" : ["#design-systems", "#suggestions"].includes(location.hash) ? "systems" : "random");
 
 class App {
-  mode = $state(modeFromHash()); // "random" or "suggest"
+  mode = $state(modeFromHash());
   q = $state("download");
   text = $state("Download all");
   locks = $state([false, false, false]);
@@ -84,7 +86,7 @@ onWordChange(recompute);
 
 // ---------- filter actions ----------
 const toggle = (set, v) => (set.has(v) ? set.delete(v) : set.add(v));
-// in the randomizer, filters for a kept icon set or typeface are switched off; suggestions ignore keeps
+// in the randomizer, filters for a kept icon set or typeface are switched off; the other views ignore keeps
 export const iconLocked = () => app.mode === "random" && app.locks[0] && !!app.cur;
 export const fontLocked = () => app.mode === "random" && app.locks[1] && !!app.cur;
 const after = (note) => { if (note) toast(note); recompute(); };
@@ -231,20 +233,33 @@ export const saves = {
 export function setTheme(t) { app.theme = t; store(KEYS.theme, t); }
 export function setDir(d) { app.dir = d; store(KEYS.dir, d); }
 
-// ---------- view: randomizer or suggestions, kept in the address so either can be linked ----------
+// ---------- view: randomizer, scenarios or design systems, kept in the address so each can be linked ----------
 export function setMode(m) {
   if (app.mode === m) return;
   app.mode = m;
-  history.replaceState(null, "", m === "suggest" ? "#suggestions" : location.pathname + location.search);
+  history.replaceState(null, "", HASH[m] || location.pathname + location.search);
   recompute(); // locks only switch filters off in the randomizer
 }
 addEventListener("hashchange", () => setMode(modeFromHash()));
-// open a suggestion in the randomizer
+// open a design system pairing in the randomizer
 export async function openPairing(p) {
   await restore({ ...p, text: app.text });
   app.history = [{ ...p, text: app.text }, ...app.history].slice(0, 10);
   setMode("random");
   scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
+}
+// open a scenario pairing: search its word, then use its icon from the results with its font
+export async function openScenarioPair(x, text) {
+  setMode("random");
+  scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
+  app.text = text;
+  await setWord(x.word);
+  const style = STYLES.find((s) => s.prefix === x.prefix && s.name === x.hero) || STYLES.find((s) => s.prefix === x.prefix);
+  const font = FONT_BY_NAME.get(x.font);
+  if (!style || !font) { toast(`Couldn't find a “${x.word}” icon in that set. Try another word.`); return; }
+  const p = { style, icon: style.name, how: style.how, font, weight: x.head, italic: false };
+  await restore({ ...p, text });
+  app.history = [{ ...p, text }, ...app.history].slice(0, 10);
 }
 
 // ---------- start ----------

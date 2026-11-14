@@ -81,7 +81,7 @@ export const SYSTEMS = [
   },
 ];
 
-// What these systems do the same way, for the top of the Suggestions view
+// What these systems do the same way, for the top of the Design systems view
 export const LESSONS = [
   ["One family for interface text", "Every system here uses a single sans family for interface text. Hierarchy comes from size and weight."],
   ["Icon size follows text size", "Carbon pairs 16 px icons with 14 px text and 20 px icons with 16 px text. Catalyst uses 16 px icons in buttons and 20 px in the sidebar."],

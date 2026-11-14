@@ -1,4 +1,4 @@
-// Suggestions: the design-system pairings in systems.js, checked against the current word and filters.
+// Design systems view: the pairings in systems.js, checked against the current word and filters.
 // Each one draws with the word's icon from the system's set and its font at the system's body weight,
 // or at the picked weight when the font has it. Pairings that fail a filter say which ones.
 import { SYSTEMS } from "./systems.js";

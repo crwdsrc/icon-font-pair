@@ -6,7 +6,8 @@
   import CreatePanel from "./components/CreatePanel.svelte";
   import Preview from "./components/Preview.svelte";
   import MatchPanel from "./components/MatchPanel.svelte";
-  import Suggestions from "./components/Suggestions.svelte";
+  import DesignSystems from "./components/DesignSystems.svelte";
+  import Scenarios from "./components/Scenarios.svelte";
   import Settings from "./components/Settings.svelte";
 
   // Source repository: change this one value and every GitHub link updates.
@@ -23,12 +24,14 @@
     return () => { removeEventListener("resize", refit); document.fonts?.removeEventListener?.("loadingdone", refit); };
   });
 
-  const MODES = [["random", "Randomizer"], ["suggest", "Suggestions"]];
-  // arrow keys move between the two tabs
+  const MODES = [["random", "Randomizer"], ["scenarios", "Scenarios"], ["systems", "Design systems"]];
+  // arrow keys, Home and End move between the tabs
   function onTabKey(e) {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const i = MODES.findIndex(([m]) => m === app.mode), n = MODES.length;
+    const j = { ArrowRight: i + 1, ArrowLeft: i - 1 + n, Home: 0, End: n - 1 }[e.key];
+    if (j == null) return;
     e.preventDefault();
-    const next = app.mode === "random" ? "suggest" : "random";
+    const next = MODES[j % n][0];
     setMode(next);
     document.getElementById(`tab-${next}`)?.focus();
   }
@@ -58,7 +61,8 @@
           <li>Type an icon name or a meaning, such as growth or money, and the text you want to set.</li>
           <li>Spin to draw an icon set from Iconify, a typeface and a weight. Keep any of the three to spin only the others.</li>
           <li>Save pairings you like. They stay in this browser.</li>
-          <li>Suggestions lists icon sets and fonts that real design systems ship together, filtered the same way.</li>
+          <li>Scenarios shows strong pairings for dashboards, marketing, mobile, docs, reading and more, with the reasons they work.</li>
+          <li>Design systems lists icon sets and fonts that real design systems ship together, filtered the same way.</li>
         </ul>
       </div>
     </wa-popover>
@@ -76,13 +80,15 @@
   </div>
 </div>
 
-<main class="layout" class:sgview={app.mode === "suggest"} id="main" role="tabpanel" aria-labelledby={`tab-${app.mode}`}>
-  <CreatePanel />
+<main class="layout" class:sgview={app.mode === "systems"} class:scview={app.mode === "scenarios"} id="main" role="tabpanel" aria-labelledby={`tab-${app.mode}`}>
+  {#if app.mode !== "scenarios"}<CreatePanel />{/if}
   {#if app.mode === "random"}
     <Preview />
     <MatchPanel />
+  {:else if app.mode === "systems"}
+    <DesignSystems />
   {:else}
-    <Suggestions />
+    <Scenarios />
   {/if}
 </main>
 

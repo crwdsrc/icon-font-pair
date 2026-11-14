@@ -37,7 +37,7 @@ svg{display:block}
 .modes button[aria-selected="true"]{background:var(--wa-color-brand-fill-loud);color:var(--wa-color-brand-on-loud)}
 .modes button:focus-visible{outline:var(--wa-focus-ring);outline-offset:2px}
 
-/* suggestions */
+/* design systems and scenarios */
 .decor wa-switch{font-weight:600}
 .sg-title{font-size:var(--wa-font-size-xl);margin:10px 0 0;line-height:1.25}
 .sg-lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 20px;margin-top:18px}
@@ -62,6 +62,30 @@ svg{display:block}
 .sg-why .help{margin:0}
 .sg-body > wa-button{margin-top:auto;padding-top:4px}
 .sg-hidden{margin-top:20px}
+.layout.scview{grid-template-columns:minmax(0,1fr)}
+.scwrap{display:grid;gap:24px;min-width:0}
+.sc-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.sc-title{margin:0;font-size:var(--wa-font-size-xl);line-height:1.25}
+.sc-needs{margin:6px 0 20px;color:var(--wa-color-text-quiet);max-width:70ch;line-height:1.55}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.sc-prev{padding:22px 22px 24px;background:var(--wa-color-surface-lowered);color:var(--wa-color-text-normal)}
+.sc-prev.wa-dark{background:var(--wa-color-surface-default)}
+.sc-demo{font-size:15px;line-height:1.4;display:grid;gap:14px}
+.sc-ic{display:inline-flex;flex:none}
+.sc-ic svg{width:1.25em;height:1.25em}
+.sc-head{display:flex;align-items:center;gap:.35em;font-size:24px;line-height:1.15}
+.sc-head .sc-ic svg{width:1.05em;height:1.05em}
+.sc-rows{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sc-rows li{display:flex;align-items:center;gap:10px}
+.sc-v{margin-inline-start:auto;font-variant-numeric:tabular-nums}
+.sc-tabs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--wa-color-surface-border);padding-top:10px;font-size:12px;text-align:center}
+.sc-tabs > span{display:grid;justify-items:center;gap:4px;color:var(--wa-color-text-quiet)}
+.sc-tabs > span.on{color:var(--wa-color-brand-on-quiet)}
+.sc-tabs .sc-ic svg{width:24px;height:24px}
+.sc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.sc-chips > span{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--wa-color-surface-default);border:1px solid var(--wa-color-surface-border)}
+.sc-code{font-size:13px;padding:8px 10px;border-radius:var(--wa-border-radius-s);background:var(--wa-color-surface-default);border:1px solid var(--wa-color-surface-border);overflow-wrap:anywhere}
+.sc-why{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:var(--wa-font-size-s);line-height:1.55}
 .panel{background:var(--wa-color-surface-default);border:1px solid var(--wa-color-surface-border);border-radius:var(--wa-border-radius-l);padding:var(--panel-pad)}
 .panel wa-divider{--spacing:22px}
 .eyebrow{font-size:var(--wa-font-size-xs);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--wa-color-text-quiet);margin:0}
@@ -232,10 +256,12 @@ pre#code{margin:10px 0 0;max-height:240px;overflow:auto;background:var(--wa-colo
   .layout{grid-template-columns:1fr;grid-template-rows:none;padding:16px 12px 40px}
   .layout.sgview{grid-template-columns:minmax(0,1fr)}
   .sg-grid{grid-template-columns:minmax(0,1fr)}
+  .sc-grid{grid-template-columns:minmax(0,1fr)}
+  .sc-prev{padding:18px 16px 20px}
   .layout > section:first-child,.layout > section:nth-child(2),.rightcol{grid-column:auto;grid-row:auto}
   .modebar{padding:14px 12px 0}
   .modes{display:flex}
-  .modes button{flex:1}
+  .modes button{flex:1 1 0;min-width:0;padding:8px 6px;font-size:var(--wa-font-size-s)}
   .panel{--panel-pad:16px}
   .summary{grid-template-columns:1fr 1fr;row-gap:16px}
   .summary > div:nth-child(3){padding-inline-start:0;border-inline-start:0}

@@ -60,8 +60,8 @@
   </article>
 {/snippet}
 
-<section class="panel sg" aria-label="Suggestions" bind:this={root}>
-  <div class="eyebrow-row"><p class="eyebrow">Suggestions</p><span class="count">{shown.length} of {rows.length} fit your filters</span></div>
+<section class="panel sg" aria-label="Design systems" bind:this={root}>
+  <div class="eyebrow-row"><p class="eyebrow">Design systems</p><span class="count">{shown.length} of {rows.length} fit your filters</span></div>
   <h2 class="sg-title">Icon sets and fonts that ship together</h2>
   <p class="help">Each pair comes from a design system in production use, checked against its own docs. Your word, text, weight and filters apply.</p>
   <div class="sg-lessons">
@@ -71,7 +71,7 @@
   {#if shown.length}
     <div class="sg-grid">{#each shown as r (r.sys.id)}{@render card(r)}{/each}</div>
   {:else}
-    <p class="empty">No suggestion fits your word and filters. The pairings below say which filter or word to change.</p>
+    <p class="empty">No design system pairing fits your word and filters. The pairings below say which filter or word to change.</p>
   {/if}
   {#if hidden.length}
     <wa-details class="sg-hidden" summary={`${hidden.length} hidden by your word or filters`} open={!shown.length}>

@@ -1,11 +1,12 @@
 # Icon + Type
 
-Pair an icon set with a free font, by spinning or from design systems that ship them together. A [crwdsrc.dev](https://crwdsrc.dev) experiment.
+Pair an icon set with a free font: spin for one, browse strong pairings by scenario, or see what design systems ship together. A [crwdsrc.dev](https://crwdsrc.dev) experiment.
 
-The page has two views, switched with the tabs at the top. Both use the same word, text and filters.
+The page has three views, switched with the tabs at the top.
 
 - **Randomizer:** type an icon name or meaning and a short text, then spin. The page picks an icon, a typeface and a weight at random from your filters, previews them together in common UI patterns and gives you copyable HTML and CSS. Keep any of the three to spin only the others.
-- **Suggestions:** icon sets and fonts that production design systems use together, such as Carbon with IBM Plex Sans or shadcn/ui with Lucide and Geist. Each card shows your word and text in that pair, what the system does with it, and links to the system's own docs. Pairs that fail a filter say which one, with a button to remove it. Open any pair in the randomizer to get its code. The link `#suggestions` opens this view.
+- **Scenarios:** strong pairings for dashboards, landing pages, mobile apps, docs, long-form reading, friendly consumer apps, public services and multilingual products. Each scenario says what matters there and shows two or three pairs in that kind of interface, with the reasons they work. Open any pair in the randomizer to get its code. The link `#scenarios` opens this view.
+- **Design systems:** icon sets and fonts that production design systems use together, such as Carbon with IBM Plex Sans or shadcn/ui with Lucide and Geist. Each card shows your word and text in that pair, what the system does with it, and links to the system's own docs. Pairs that fail a filter say which one, with a button to remove it. It uses the same word, text, weight and filters as the randomizer. Open any pair in the randomizer to get its code. The link `#design-systems` opens this view, and the older `#suggestions` still works.
 
 Features:
 
@@ -56,11 +57,12 @@ The thresholds sit at the top of the "reading shapes" section of that file.
 index.html                     Vite entry
 src/main.js                    Loads Web Awesome, styles and the app
 src/App.svelte                 Header, view tabs, layout, footer
-src/components/                Create panel, preview, spin panel, suggestions, settings and small controls
+src/components/                Create panel, preview, spin panel, scenarios, design systems, settings and small controls
 src/lib/iconify.js             Iconify search, shape loading and trait reading
 src/lib/filters.js             Filter definitions, counts per option and the way out of empty results
 src/lib/pick.js                Random picking that respects locks
-src/lib/systems.js             Design system pairings for Suggestions, with sources
+src/lib/scenarios.js           Scenario pairings and the reasons they work
+src/lib/systems.js             Design system pairings, with sources
 src/lib/suggest.js             Checks those pairings against the word and filters
 src/lib/fonts.js               Font catalog, labels and loaders
 src/lib/render.js              Lockup markup, icon alignment, links and the code snippet
@@ -166,7 +168,8 @@ To run the image anywhere else, see [With Docker](#with-docker). Pass `--build-a
 
 - **Google Fonts:** bump `google-font-metadata`. To refresh the tags, download `https://raw.githubusercontent.com/google/fonts/main/tags/all/families.csv` to `vendor/google-fonts-tags.csv`.
 - **Fontsource:** run `node scripts/update-fontsource.cjs`, or pass new ids to add families. Hand-made classifications for families without Google tags live in `HAND` in `scripts/build-data.cjs`.
-- **Suggestions:** each pairing in `src/lib/systems.js` names the Iconify prefix, the font family as it appears in the catalog, the weights the system documents and links to its docs. Add one only when both halves are free and the system's own docs confirm them.
+- **Scenarios:** each scenario in `src/lib/scenarios.js` has its own sample text and two or three pairs. A pair names the Iconify prefix, one icon per sample row, a headline icon, a word the randomizer searches for, the font and the reasons. Icon names must exist in the set.
+- **Design systems:** each pairing in `src/lib/systems.js` names the Iconify prefix, the font family as it appears in the catalog, the weights the system documents and links to its docs. Add one only when both halves are free and the system's own docs confirm them.
 - **Icons:** nothing to update. New sets and icons on Iconify show up on their own. Per-icon page links for Lucide, Tabler, Bootstrap Icons and Boxicons are in `iconPage()` in `src/lib/render.js`. Other sets open the icon's page on Iconify.
 
 ## Configuration

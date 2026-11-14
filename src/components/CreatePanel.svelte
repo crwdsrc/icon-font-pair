@@ -64,8 +64,8 @@
     <div class="field weightpick">
       <span class="flabel" id="fweightLbl">Font weight</span>
       <Picker label="Font weight" options={weightOptions} value={v.ff.weight} onPick={(x) => filters.setWeight(x)} />
-      <p class="help">{app.mode === "suggest"
-        ? (v.ff.weight ? "Suggestions use this weight when the font has it." : "Suggestions use the weight each design system sets for body text.")
+      <p class="help">{app.mode === "systems"
+        ? (v.ff.weight ? "Design system pairs use this weight when the font has it." : "Design system pairs use the weight each system sets for body text.")
         : (v.ff.weight ? "Spins use this weight. Only fonts that have it are in the pool." : "Any weight picks one at random from each font.")}</p>
     </div>
     <!-- a kept typeface ignores the font filters, so they are switched off until it is unlocked -->
